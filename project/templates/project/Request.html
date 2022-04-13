@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Request Page </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="text-center jumbotron">
+            <h1> The Requests </h1>
+        </div>
+        <br>
+        <div class="container">
+            {% for user in users %}                
+            <nav class="navbar">
+                <a href="{% url 'detail' user.id %}"> <h2> {{user.username}} </h2> </a> 
+                <a href="{% url 'Accept' user.id %}"> <h4> accept user </h4> </a> 
+                <a href="{% url 'Decline' user.id %}"> <h4> decline user </h4> </a> 
+                </nav>                
+                <hr>
+            {% endfor %}
+    </div>
+        <script src="" async defer></script>
+        <style>
+          body{
+            background:#6283a1;
+        }
+        </style>
+    </body>
+</html>
