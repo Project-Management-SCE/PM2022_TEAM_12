@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Log in page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gaming Login Form Widget Tab Form,Login Forms,Sign up Forms,Registration Forms,News letter Forms,Elements"/>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="stylesheet" type="text/css" href="{% static 'login.css'%}">
+</head>
+
+<body style="background-image:url('{% static 'img/image.jpg'%}');">
+	<div class="padding-all">
+		<div class="header">
+			<h1> Wep Login Form</h1>
+		</div>
+
+		<div class="design-w3l">
+			<div class="mail-form-agile">
+				<form action="#" method="post">
+					<input type="text" name="name" placeholder="User Name  or  email..." required=""/>
+					<input type="password"  name="password" class="padding" placeholder="Password" required=""/>
+					<input type="submit" value="submit" style="
+                    width: 100%;
+                         padding: 8px 10px;
+                        font-size: 25px;
+                         border: 0px;
+                         background: #000000;
+                         color: #fff;
+                         cursor: pointer;
+                          border-radius: 3px;
+                            outline: none;
+                         size: 16px;
+                    ">
+				</form>
+			</div>
+			{% for message in messages%}
+			<p id="message">{{message}}</p>
+			{%endfor%}
+		  <div class="clear"> </div>
+		</div>
+
+		<div class="footer">
+		</div>
+	</div>
+</body>
+
+</html>
