@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'project/test.css' %}" />
+        <script src="{% static 'project/test.js' %}"></script>
+
+    </head>
+
+    <body>
+
+        <header class="header">
+            <a href="#" class="logo">
+                <img src="static/logo.png" alt="">
+
+
+            </a>
+            <nav class="navbar">
+                <a href="#home">Home</a>
+                <a href="/">LogOut</a>
+            </nav>
+
+
+        </header>
+                <div id="map"></div>
+
+        <div class="container">
+            <form action="" method="Details" class="contact-form">
+                {% csrf_token %}
+                     <div class="form-control">
+                    <div class="tag">To</div>
+                    <output type="text" name="to">
+                        <input type="text" id="toto" value="{{too}}" readonle>
+
+                </div>
+                     <div class="form-control">
+                    <div class="tag">From</div>
+                    <output type="text" name="from">
+                        <input type="text" id="frfr" value="{{too}}" readonle>
+
+                </div>
+
+                <div class="form-control">
+                    <div class="tag"> Bus Number</div>
+                    <output type="text" name="bus-number" >
+                    <h3> {{busnum}}</h3>
+                </div>
+
+                <div class="form-control">
+                    <div class="tag">Company</div>
+                    <output type="text" name="Company" >
+                        <h3> {{buscompany}}</h3>
+                </div>
+
+                <div class="form-control">
+                    <div class="tag">Route</div>
+                    <output type="text" name="route">
+                        <h3> {{busstation}}</h3>
+                </div>
+                
+               
+           
+
+                
+                   
+
+
+            </form>
+           
+
+        </div>
+                 
+
+
+      
+
+    
+
+
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsUJ0P3eueaI2IdbInU6P4I6amqPyYHUI&callback=initMap&v=weekly"
+      async
+    ></script>
+
+    </body>
+
+ 
+
+
+
+
+
+</html>
