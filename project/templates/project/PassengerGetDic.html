@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -18,12 +19,15 @@
 
             </a>
             <nav class="navbar">
-                <a href="#home">Home</a>
+                <a href="/PassengerHomePage">Home</a>
                 <a href="/">LogOut</a>
             </nav>
 
 
         </header>
+        <br>
+        <br>
+
                 <div id="map"></div>
 
         <div class="container">
@@ -38,7 +42,7 @@
                      <div class="form-control">
                     <div class="tag">From</div>
                     <output type="text" name="from">
-                        <input type="text" id="frfr" value="{{too}}" readonle>
+                        <input type="text" id="frfr" value="{{fromm}}" readonle>
 
                 </div>
 
@@ -86,7 +90,37 @@
 
     </body>
 
- 
+<style>
+            .header{
+            background: #AF2D18;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 5%;
+            border-bottom: var(--border);
+            position: fixed;
+            top: 0; left:0; right:0;
+            z-index: 1000;
+
+        }
+
+.header .navbar a{
+    margin: 01rem;
+    font-size: 1.2rem;
+    color:#fff;
+
+
+}
+.header .navbar a:hover{
+    color: var(--main-color);
+    border-bottom: .1rem solid var(--main-color);
+    padding-bottom: .5rem;
+}
+
+
+
+
+</style>
 
 
 

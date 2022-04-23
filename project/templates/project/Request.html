@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,31 +8,79 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Request Page </title>
+        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <div class="text-center jumbotron">
-            <h1> The Requests </h1>
-        </div>
-        <br>
-        <div class="container">
-            {% for user in users %}                
-            <nav class="navbar">
-                <a href="{% url 'detail' user.id %}"> <h2> {{user.username}} </h2> </a> 
-                <a href="{% url 'Accept' user.id %}"> <h4> accept user </h4> </a> 
-                <a href="{% url 'Decline' user.id %}"> <h4> decline user </h4> </a> 
-                </nav>                
-                <hr>
-            {% endfor %}
-    </div>
-        <script src="" async defer></script>
         <style>
-          body{
-            background:#6283a1;
-        }
+
+
+
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 800px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  margin-left:50px;
+}
+
+.content-table thead tr {
+  font-family: sans-serif; /* Change your font family */
+  background-color: #AF2D18;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th{
+  width: 180px;
+  padding: 20px;
+}
+.content-table td {
+  font-family: sans-serif; /* Change your font family */
+  padding: 12px 15px;
+}
+
+
+.content-table tbody tr {  
+  border-bottom: 1px solid #dddddd;
+}
+
         </style>
+    </head>
+
+<body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
+                  <div class="header" >
+                    <style>
+                      div{
+                        height: 100px;
+                        color: #AF2D18;
+                        text-decoration: underline;
+                        margin-left:450px;
+                        overflow: hidden;
+                        font-family: "Lucida Console", monospace;
+                        font-weight: bold;
+                        font-size: 1.3rem;
+                      }
+                   </style>
+                   <h1> The Requests </h1>
+                  </div>
+<table class="content-table">
+        <thead>
+                <tr>
+                  <th>username</th>
+                </tr>
+              </thead>
+            {% for user in users %}                
+            <td> <a href="{% url 'detail' user.id %}"> <h2> {{user.username}} </h2> </a> </td>
+                <td> <a href="{% url 'Accept' user.id %}"> <h4> accept user </h4> </a> </td>
+                    <td> <a href="{% url 'Decline' user.id %}"> <h4> decline user </h4> </a> </td>
+            </tr>
+            {% endfor %}
+        <script src="" async defer></script>
+        
     </body>
 </html>

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,7 +9,7 @@
 
     </head>
 
-    <body>
+<body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
         <header class="header">
             <a href="#" class="logo">
                 <img src="static/logo.png" alt="">
@@ -15,9 +17,9 @@
 
             </a>
             <nav class="navbar">
-                <a href="#request">Request</a>
-                <a href="#Passengers">Passengers</a>
-                <a href="#Drivers">Drivers</a>
+                <a href="/Request/">Request</a>
+                <a href="/deluser/">Passengers</a>
+                <a href="/DriverDetails/">Drivers</a>
                 <a href="/AddNewDriver/">Add New Driver</a>
 
             </nav>
@@ -30,7 +32,7 @@
 
                 <div class="form-control">
                     <div class="tag"> Full Name</div>
-                    <input type="text" name="full-name">
+                    <input type="text" name="full_name">
                 </div>
 
                 <div class="form-control">
@@ -107,7 +109,7 @@
 
         }
         .submit-btn{
-            background-color: rgb(40, 68, 92);
+            background-color: #AF2D18;
             border: none;
             width: 50%;
             padding: 1rem;
@@ -160,10 +162,10 @@
         }
 
         body{
-            background:#6283a1;
+            background:#AF2D18;
         }
         .header{
-            background: #474c91;
+            background: #AF2D18;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -182,11 +184,9 @@
             margin: 0 1rem;
             font-size: 1.6rem;
             color:#fff;
-
-
         }
         .header .navbar a:hover{
-            color: var(--main-color);
+            color: #fff;
             border-bottom: .1rem solid var(--main-color);
             padding-bottom: .5rem;
         }

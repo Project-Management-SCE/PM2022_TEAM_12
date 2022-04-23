@@ -48,7 +48,7 @@ font-family: "Asap-Regular";
 }
 .header h1 {
     width: 500px;
-    background-color: rgb(0,0,0,6);
+    background-color: rgb(26, 13, 51);
     margin: auto;
     color: #FFFFFF;
     padding: 20px 0px 20px 0px;
@@ -58,7 +58,7 @@ font-family: "Asap-Regular";
 
 
 .design-w3l{
-    background-color: rgb(0,0,0,0.5);
+    background-color: rgb(26, 13, 51);
     width: 500px;
     margin: auto;
     padding: 20px 0px 20px 0px;
@@ -82,11 +82,11 @@ font-size: 16px;
 outline: none;
 background:transparent;
 border:0px;
-border-bottom: 1px solid #fff;
+border-bottom: 1px solid #FFFFFF;
 border-radius: 0px;
 font-family: "Asap-Regular";
 letter-spacing:1.6px;
-color:#fff;
+color:#FFFFFF;
 }
 ::-webkit-input-placeholder{
    color:#b4b0b0 !important;

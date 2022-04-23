@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -12,28 +11,30 @@
 <link rel="stylesheet" type="text/css" href="{% static 'login.css'%}">
 </head>
 
-<body style="background-image:url('{% static 'img/image.jpg'%}');">
-	<div class="padding-all">
-		<div class="header">
-			<h1> Wep Login Form</h1>
+<body style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
+	<div class="padding-all" style="margin-left:600px; overflow: none;">
+		<div class="header" style="background-color: #FFFFFF; margin-center;
+		color: #AF2D18
+		overflow: hidden;">
+			<h1 > Wep Login Form</h1>
 		</div>
 
-		<div class="design-w3l">
-			<div class="mail-form-agile">
+			<div class="mail-form-agile" style="  background: #646569b7; margin-right;">
 				<form action="#" method="post">
-					<input type="text" name="name" placeholder="User Name  or  email..." required=""/>
-					<input type="password"  name="password" class="padding" placeholder="Password" required=""/>
+					<input type="text" name="name" placeholder="User Name  or  email..." required="" margin-center;/>
+					<input type="password"  name="password" class="padding" placeholder="Password" required="" margin-center; />
 					<input type="submit" value="submit" style="
-                    width: 100%;
-                         padding: 8px 10px;
+                   		 width: 200px;
+                         padding: 8px ;
                         font-size: 25px;
                          border: 0px;
-                         background: #000000;
+                         background: rgb(13, 1, 69);
                          color: #fff;
                          cursor: pointer;
                           border-radius: 3px;
                             outline: none;
                          size: 16px;
+						 margin-left:280px;
                     ">
 				</form>
 			</div>
@@ -41,11 +42,8 @@
 			<p id="message">{{message}}</p>
 			{%endfor%}
 		  <div class="clear"> </div>
-		</div>
-
-		<div class="footer">
-		</div>
 	</div>
+	
 </body>
 
 </html>

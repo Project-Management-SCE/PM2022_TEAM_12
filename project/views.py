@@ -1,13 +1,32 @@
 from unicodedata import name
 from django.http import HttpResponse,JsonResponse
+from django.core.mail import send_mail
+from email.message import EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as LL
 from project.models import User,Driver
+from project.forms import contactformemail
+from datetime import datetime
+import googlemaps
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from . forms import MyfileuploadForm
 import smtplib
+keyy='AIzaSyAsUJ0P3eueaI2IdbInU6P4I6amqPyYHUI'
+gmaps = googlemaps.Client(key=keyy)
+
+# Request directions via public transit
+
+def Busway(fromm,to):
+     now = datetime.now()
+     directions_result = gmaps.directions(fromm,to,mode="transit",departure_time=now)
+     bus_num=directions_result[0]['legs'][0]['steps'][0]['transit_details']['line']['short_name']
+     bus_stations=directions_result[0]['legs'][0]['steps'][0]['transit_details']['line']['name']
+     bus_company=directions_result[0]['legs'][0]['steps'][0]['transit_details']['line']['agencies'][0]['name']
+     return [bus_num,bus_stations,bus_company]
 
 
 # Create your views here.
@@ -37,11 +56,29 @@ def login(request):
             elif user.is_authenticated and user.is_Admin==True :
                 return redirect('AdminHomePage') #Go to teacher home
         else:
-            messages.error(request,pass1)
-            # Invalid email or password. Handle as you wish
+            messages.error(request,"Invalid email or password")
             return redirect('login')
 
     return render(request,'project/login.html')
+
+def signup(request):
+
+    if request.method == "POST" :
+        name=request.POST.get('username')
+        pass1=request.POST.get('pass1')
+        email=request.POST.get('email')
+        fname=request.POST.get('Fname')
+        lname=request.POST.get('Lname')
+        myuser=User.objects.create_user(username=name,password=pass1)
+        #myuser.first_name=fname
+        #myuser.lname_name=lname
+        myuser.is_passenger=True
+        myuser.save()
+        messages.success(request,"succseful")
+        return redirect('login')
+
+    messages.error(request,"not added")
+    return render(request,'project/signup.html')
 
 def DriverSignup(request):
 
@@ -63,6 +100,45 @@ def DriverSignup(request):
 
         return redirect('DriverFile')
     return render(request,'project/DriverSignup.html')
+
+def AdminHomePage(request):
+    return render(request,'project/AdminHomePage.html')
+
+def AddNewDriver(request):
+    if request.method == "POST":
+        name=request.POST.get('name')
+        password=request.POST.get('pass')
+        myuser=Driver.objects.create_user(username=name,password=password)
+        myuser.its_ok=False
+        myuser.save()
+        messages.success(request,"succseful")
+        return redirect('AdminHomePage')
+    return render(request,'project/AddNewDriver.html')  
+
+def PassengerHomePage(request):
+    if  request.method=='POST':
+
+        fromm=request.POST.get('fromm')
+        too=request.POST.get('tooo')
+        request.session['fromm'] = fromm
+        request.session['tooo'] = too
+        print("***************************************\n\n\n")
+        print(request.session['fromm'],request.session['tooo'] ) 
+        print("***************************************\n\n\n")
+        print(fromm,too) 
+        print("***************************************\n\n\n")
+        return redirect('/map')
+    print(request.POST.get('fromm'),request.POST.get('too')) 
+    print("***************************************")
+
+    return render(request,'project/PassengerHomePage.html')
+def PassengerGetDic(request):
+    return render(request,'project/PassengerGetDic.html')
+
+
+def tripinfo(request):
+    k=Busway(request.session['fromm'],request.session['tooo'])
+    return render(request,'project/PassengerGetDic.html',{'busnum':k[0],'buscompany':k[2],'busstation':k[1],'fromm':request.session['fromm'],'too':request.session['tooo']})  
 
 
 @csrf_exempt
@@ -86,3 +162,57 @@ def DriverFile(request):
 def DriverHomePage(request):
      return render(request,'project/DriverHomePage.html')
 
+def Request(request):
+    userList= Driver.objects.filter(is_ok=False)
+    return render(request, 'project/Request.html', {'users': userList})
+
+def DriverDetails(request):
+    user= Driver.objects.filter(is_ok=True)
+    return render(request,'project/DriverDetails.html',{'users': user})
+
+def details(request,id):
+    user=get_object_or_404(Driver,id=id)
+    return render(request,'project/detail.html',{'user':user})
+
+def accept(request,id):
+    user=get_object_or_404(Driver,id=id)
+    user.is_ok=True
+    user.save()
+    return redirect('AdminHomePage')    
+
+def decline(request,id):
+    obj=get_object_or_404(Driver,id=id)
+    obj.delete()
+    return redirect('AdminHomePage')    
+
+
+def SendMail(request):
+    if request.method=="POST":
+        full_name = request.POST['full_name']
+        email=request.POST['email']
+        subject=request.POST['subject']
+        message=request.POST['message']
+        send_mail(
+        subject,
+        message,
+        'from@emample.com',
+        [email],
+        fail_silently=False,        
+        ) 
+        return redirect('AdminHomePage')    
+
+    return render(request,'project/SendMail.html')
+
+def  deluser(request):
+    user= User.objects.filter(is_passenger=True)
+    return render(request,'project/deluser.html',{'users': user})
+
+def delete(request,id):
+    obj=User.objects.get(id=id)
+    obj.delete()
+    return redirect('deluser')
+
+def deleteDriver(request,id):
+    obj=get_object_or_404(Driver,id=id)
+    obj.delete()
+    return redirect('DriverDetails') 

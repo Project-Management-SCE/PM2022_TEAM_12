@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +10,7 @@
 
     </head>
 
-    <body>
+<body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
     <form action="" method="POST">
         {% csrf_token %}
         <header class="header">
@@ -18,7 +20,7 @@
 
             </a>
             <nav class="navbar">
-                <a href="#home">Home</a>
+                <a href="/PassengerHomePage">Home</a>
                 <a href="/">LogOut</a>
             </nav>
 
@@ -32,7 +34,31 @@
                 <div class="search_warp search_warp_1">
                     <div class="search_box">
                         
-                        <input type="text" name="fromm"class="input" placeholder="From...">
+                        <input type="text" name="fromm"class="input" placeholder="from the coutry.">
+
+
+
+                    </div>
+                       
+
+
+                </div>
+                    <div class="search_warp search_warp_1">
+                    <div class="search_box">
+                        
+                        <input type="text" name="aa"class="input" placeholder="to the coutry">
+
+
+
+                    </div>
+                       
+
+
+                </div>
+                    <div class="search_warp search_warp_1">
+                    <div class="search_box">
+                        
+                        <input type="text" name="bb"class="input" placeholder="from bus station">
 
 
 
@@ -44,9 +70,9 @@
                 <div class="search_warp search_warp_1">
                     <div class="search_box">
                         
-                        <input type="text" name="tooo" class="input" placeholder="To...">
+                        <input type="text" name="tooo" class="input" placeholder="to bus station">
                      
-                            <button  class="btn btn_common" type="submit" name="submit" value="">
+                            <button  class="btn btn_common" type="submit" name="submit" value="search">
         
                 
 
@@ -72,7 +98,7 @@
         .header1{
             width: 1000px;
             padding: 20px;
-            background: #848f99;
+          
             margin: 25px auto;
             border-radius: 5px;
             text-align: center;
@@ -81,7 +107,8 @@
         .header1 p{
             font-size:  25px;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 800;
+             margin-top: -1px;
         }
         .container .input{
             border: 0;
@@ -118,9 +145,7 @@
             z-index: 1 ;
             cursor: pointer;
         }
-        .search_warp .search_box .btn:hover{
-            background-color: #545c63;
-        }
+      
         .search_warp .search_box .btn.btn_common .fas{
             position: absolute;
             top: 50%;
@@ -171,7 +196,7 @@
             background:#6283a1;
         }
         .header{
-            background: #474c91;
+            background: #AF2D18;
             display: flex;
             align-items: center;
             justify-content: space-between;
