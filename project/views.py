@@ -33,6 +33,7 @@ def Busway(fromm,to):
 def index(request):
     return render(request,'index.html')
 
+
 def abouthome(request):
     return HttpResponse("Home page")
 
@@ -216,3 +217,9 @@ def deleteDriver(request,id):
     obj=get_object_or_404(Driver,id=id)
     obj.delete()
     return redirect('DriverDetails') 
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
