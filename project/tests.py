@@ -12,7 +12,7 @@ def test_login(self):
     self.assertFalse(login)
 
 class LogTest(TestCase):
-    def test_login(self):
+    def test_aa(self):
         driver=Driver.objects.all()
         self.assertFalse(driver.exists())
         
