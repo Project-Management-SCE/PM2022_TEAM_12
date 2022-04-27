@@ -5,7 +5,7 @@ from email.message import EmailMessage
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as LL
 from project.models import User,Driver
 from project.forms import contactformemail
