@@ -6,7 +6,6 @@ from django.test import TestCase, tag
 from django import setup
 
 
-@tag('unit-test')
 class LogTest(TestCase):
     if django.VERSION[:2] >= (1, 7):
         # Django 1.7 requires an explicit setup() when running tests in PTVS
@@ -14,9 +13,9 @@ class LogTest(TestCase):
         def setUpClass(cls):
             super(LogTest, cls).setUpClass()
             django.setup()
-    
+
+    @tag('unit-test')
     def test_login(self):
-        """Tests the contact page."""
         login=self.client.login(username='soso', password='S263safa')
         self.assertFalse(login)
         
