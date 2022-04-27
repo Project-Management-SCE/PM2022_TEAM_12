@@ -1,12 +1,11 @@
 import unittest
 from multiprocessing.dummy.connection import Client
 from .models import Driver
-from django.test import TestCase, tag
-from django.urls import reverse
 import django
+from django.test import TestCase, tag
 from django import setup
 
-@tag('unit_test')
+@tag('unit-test')
 def test_login(self):
     login = self.client.login(username='israa1', password='123')
     self.assertFalse(login)
