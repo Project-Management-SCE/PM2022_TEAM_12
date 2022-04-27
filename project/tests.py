@@ -6,10 +6,20 @@ from django.test import TestCase, tag
 from django import setup
 
 
+@tag('unit-test')
 class LogTest(TestCase):
-    def test_aa(self):
-        driver=Driver.objects.all()
-        self.assertFalse(driver.exists())
+    if django.VERSION[:2] >= (1, 7):
+        # Django 1.7 requires an explicit setup() when running tests in PTVS
+        @classmethod
+        def setUpClass(cls):
+            super(ViewTest, cls).setUpClass()
+            django.setup()
+    
+    def test_login(self):
+        """Tests the contact page."""
+        self.client.login(username='soso', password='S263safa')
+        response = self.client.get('/Login/')
+        self.assertContains(response, 'Login', 4, 200)
         
 '''
 class LogoutTest(TestCase):
