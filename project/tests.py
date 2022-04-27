@@ -6,7 +6,6 @@ from django.test import TestCase, tag
 from django import setup
 
 
-@tag('unit-test')
 class LogTest(TestCase):
     def test_aa(self):
         driver=Driver.objects.all()
