@@ -12,14 +12,13 @@ class LogTest(TestCase):
         # Django 1.7 requires an explicit setup() when running tests in PTVS
         @classmethod
         def setUpClass(cls):
-            super(ViewTest, cls).setUpClass()
+            super(LogTest, cls).setUpClass()
             django.setup()
     
     def test_login(self):
         """Tests the contact page."""
-        self.client.login(username='soso', password='S263safa')
-        response = self.client.get('/Login/')
-        self.assertContains(response, 'Login', 4, 200)
+        login=self.client.login(username='soso', password='S263safa')
+        self.assertFalse(login)
         
 '''
 class LogoutTest(TestCase):
