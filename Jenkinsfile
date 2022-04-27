@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'python:3.7'
+                    image 'python:3.10.4'
                 }
             }
             steps {
@@ -17,7 +17,7 @@ pipeline {
         stage(' Unit Tests') {
             agent {
                 docker {
-                    image 'python:3.7'
+                    image 'python:3.10.4'
                 }
             }
             steps {
@@ -29,7 +29,7 @@ pipeline {
         stage(' integration-test') {
             agent {
                 docker {
-                    image 'python:3.7'
+                    image 'python:3.10.4'
                 }
             }
             steps {
