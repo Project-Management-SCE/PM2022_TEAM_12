@@ -1,7 +1,6 @@
 pipeline {
     agent none
     stages {
-
         stage('Build') {
             agent {
                 docker {
@@ -22,10 +21,11 @@ pipeline {
             }
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'python manage.py test --tag=unit_test'
+                sh 'python manage.py test'
 		      }
 			}
         }
+        '''
         stage(' integration-test') {
             agent {
                 docker {
@@ -37,6 +37,6 @@ pipeline {
                 sh 'python manage.py test'
 		      }
 			}
-        }
+        }'''
 	}
 }
