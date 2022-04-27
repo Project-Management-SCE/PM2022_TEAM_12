@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 #from django.utils.html import escape, make_safe
@@ -22,7 +21,7 @@ class Driver(User):
     phone=models.CharField(max_length=10,default='')
     is_ok= models.BooleanField(default=False)
     License=models.FileField(upload_to='files/', null=True)
-    certificate=models.FileField(default=NULL)
+    certificate=models.FileField(default=None)
 
     class Meta:
         db_table = 'Drivers'

@@ -1,31 +1,13 @@
-import unittest
-from multiprocessing.dummy.connection import Client
-from .models import Driver
-import django
+
 from django.test import TestCase, tag
-from django import setup
-
-
-class LogTest(TestCase):
-    if django.VERSION[:2] >= (1, 7):
-        # Django 1.7 requires an explicit setup() when running tests in PTVS
-        @classmethod
-        def setUpClass(cls):
-            super(LogTest, cls).setUpClass()
-            django.setup()
-
-    def test_login(self):
-        login=self.client.login(username='soso', password='S263safa')
-        self.assertFalse(login)
-        
-'''
+from django.urls import reverse
+from project.models import *
+  
 class LogoutTest(TestCase):
    def testLogout(self):
-       User.objects.create(username='israa1', password='123')
+       User.objects.create(username='areen1', password='123123')
        self.client.login(username='username',password='password')
-
        response = self.client.get(reverse('logout'), follow=True)
-
        self.assertEqual(response.status_code, 200)
        self.assertFalse(response.context["user"].is_authenticated)
 
@@ -35,4 +17,4 @@ class ManageUsersTest(TestCase):
                                         last_name='last_name',
                                         first_name='first_name')
         self.user.set_password('password')
-        self.user.save()'''
+        self.user.save()

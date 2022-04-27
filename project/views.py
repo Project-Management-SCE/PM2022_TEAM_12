@@ -5,7 +5,7 @@ from email.message import EmailMessage
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as LL
 from project.models import User,Driver
 from project.forms import contactformemail
@@ -32,6 +32,7 @@ def Busway(fromm,to):
 # Create your views here.
 def index(request):
     return render(request,'index.html')
+
 
 def abouthome(request):
     return HttpResponse("Home page")
@@ -216,3 +217,9 @@ def deleteDriver(request,id):
     obj=get_object_or_404(Driver,id=id)
     obj.delete()
     return redirect('DriverDetails') 
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
