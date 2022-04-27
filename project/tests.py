@@ -6,7 +6,7 @@ from django.urls import reverse
 import django
 from django import setup
 
-@tag('unit-test')
+@tag('unit_test')
 def test_login(self):
     login = self.client.login(username='israa1', password='123')
     self.assertFalse(login)
