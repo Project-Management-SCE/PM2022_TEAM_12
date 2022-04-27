@@ -1,12 +1,10 @@
 pipeline {
-    agent none
-    stages {
-        stage('Build') {
             agent {
                 docker {
                     image 'python:3.10.4'
                 }
-            }
+            }    stages {
+        stage('Build') {
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
 		               sh 'pip install -r requirements.txt'
@@ -14,11 +12,6 @@ pipeline {
 			}
         }
         stage(' Unit Tests') {
-            agent {
-                docker {
-                    image 'python:3.10.4'
-                }
-            }
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
                 sh 'python manage.py test'
