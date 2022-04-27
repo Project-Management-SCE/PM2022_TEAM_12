@@ -7,7 +7,7 @@ from django import setup
   
 class LogoutTest(TestCase):
    def testLogout(self):
-       User.objects.create(username='lyale1', password='123')
+       User.objects.create(username='areen', password='123123')
        self.client.login(username='username',password='password')
 
        response = self.client.get(reverse('logout'), follow=True)
