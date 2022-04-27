@@ -3,9 +3,15 @@ from multiprocessing.dummy.connection import Client
 from .models import Driver
 from django.test import TestCase, tag
 from django.urls import reverse
+import django
 from django import setup
 django.setup()
+
 @tag('unit-test')
+def test_login(self):
+    login = self.client.login(username='israa1', password='123')
+    self.assertFalse(login)
+
 class LogTest(TestCase):
     def test_login(self):
         driver=Driver.objects.all()
