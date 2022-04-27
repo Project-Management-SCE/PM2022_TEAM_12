@@ -4,7 +4,7 @@ from .models import Driver
 from django.test import TestCase, tag
 from django.urls import reverse
 from django import setup
-
+django.setup()
 @tag('unit-test')
 class LogTest(TestCase):
     def test_login(self):
