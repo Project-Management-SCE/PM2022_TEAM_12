@@ -6,7 +6,7 @@ from django.test import TestCase, tag
 from django import setup
 from django.test import TestCase, tag
 from django.urls import reverse
-from track.models import *
+from project.models import *
   
 class LogoutTest(TestCase):
    def testLogout(self):
