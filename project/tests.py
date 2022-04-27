@@ -14,7 +14,6 @@ class LogTest(TestCase):
             super(LogTest, cls).setUpClass()
             django.setup()
 
-    @tag('unit-test')
     def test_login(self):
         login=self.client.login(username='soso', password='S263safa')
         self.assertFalse(login)
