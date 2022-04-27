@@ -1,12 +1,31 @@
-from django.test import TestCase
-
-# Create your tests here.
 import unittest
+from multiprocessing.dummy.connection import Client
+from .models import Driver
+from django.test import TestCase, tag
+from django.urls import reverse
+from django import setup
 
-class TestStringMethods(unittest.TestCase):
+@tag('unit-test')
+class LogTest(TestCase):
+    def test_login(self):
+        driver=Driver.objects.all()
+        self.assertFalse(driver.exists())
+        
+'''
+class LogoutTest(TestCase):
+   def testLogout(self):
+       User.objects.create(username='israa1', password='123')
+       self.client.login(username='username',password='password')
 
-    def 1add2equal3(self):
-        self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
+       response = self.client.get(reverse('logout'), follow=True)
 
-if _name_ == '_main_':
-    unittest.main()
+       self.assertEqual(response.status_code, 200)
+       self.assertFalse(response.context["user"].is_authenticated)
+
+class ManageUsersTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='username', email='email',
+                                        last_name='last_name',
+                                        first_name='first_name')
+        self.user.set_password('password')
+        self.user.save()'''
