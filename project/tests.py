@@ -5,7 +5,6 @@ from django.test import TestCase, tag
 from django.urls import reverse
 import django
 from django import setup
-django.setup()
 
 @tag('unit-test')
 def test_login(self):
