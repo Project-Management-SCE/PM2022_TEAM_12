@@ -4,6 +4,9 @@ from .models import Driver
 import django
 from django.test import TestCase, tag
 from django import setup
+from django.test import TestCase, tag
+from django.urls import reverse
+from track.models import *
   
 class LogoutTest(TestCase):
    def testLogout(self):
