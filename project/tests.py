@@ -5,11 +5,8 @@ import django
 from django.test import TestCase, tag
 from django import setup
 
-@tag('unit-test')
-def test_login(self):
-    login = self.client.login(username='israa1', password='123')
-    self.assertFalse(login)
 
+@tag('unit-test')
 class LogTest(TestCase):
     def test_aa(self):
         driver=Driver.objects.all()
