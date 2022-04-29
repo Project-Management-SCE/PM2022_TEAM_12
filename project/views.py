@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as LL
-from project.models import User,Driver
+from project.models import User,Driver,Updates
 from project.forms import contactformemail
 from datetime import datetime
 import googlemaps
@@ -57,6 +57,8 @@ def login(request):
             elif user.is_authenticated and user.is_Admin==True :
                 return redirect('AdminHomePage') #Go to teacher home
         else:
+            A=Updates(senderID=username,message="pass1")
+            A.save()
             messages.error(request,"Invalid email or password")
             return redirect('login')
 

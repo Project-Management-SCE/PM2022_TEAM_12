@@ -69,15 +69,15 @@
   </thead>
   {% for user in users%}
   <tr>
-    <td>{{user.username}}</td>
-    <td>{{user.email}}</td>
-    <td>{{user.companyName}}</td>
-    <td>{{user.phone}}</td>
+    <td><b><h2> {{user.username}}  </h2></b></td>
+    <td><b><h2>{{user.email}}</h2></b></td>
+    <td><b><h2>{{user.companyName}}</h2></b></td>
+    <td><b><h2>{{user.phone}}</h2></b></td>
     <td>
-      <a href="{{user.certificate.url}}" download> {{user.certificate}} </a>
+      <img src="{{user.certificate.url}}" height="200" width="250">
     </td>
     <td>
-      <a href="{{user.License.url}}" download> {{user.License}} </a>
+      <img src="{{user.License.url}}" height="200" width="250">    
     </td>
     <td>
       <a href="/deleteDriver/{{user.id}}" class="btn btn-danger"> Delete </a>

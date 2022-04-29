@@ -6,16 +6,6 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     is_passenger=models.BooleanField(default=False)
     is_Admin=models.BooleanField(default=False)
-   
-
-
-
-'''class Passenger(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
-    username=models.CharField(max_length=100)
-    A=models.CharField(max_length=100)
-
-'''
 class Driver(User):
     companyName=models.CharField(max_length=100,default='')
     phone=models.CharField(max_length=10,default='')
@@ -26,4 +16,10 @@ class Driver(User):
     class Meta:
         db_table = 'Drivers'
 
+class Updates(models.Model):
+    senderID=models.CharField(max_length=100,default='')
+    message=models.CharField(max_length=10,default='')
+
+    class Meta:
+        db_table = 'Updates'
     

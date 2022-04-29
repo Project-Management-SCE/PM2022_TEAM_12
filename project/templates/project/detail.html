@@ -16,7 +16,9 @@
 * {
   font-family: sans-serif; /* Change your font family */
 }
-
+.tab {
+            tab-size: 4;
+        }
 .content-table{
   border-collapse: collapse;
   font-size: 1.2em;
@@ -49,12 +51,13 @@
     <br>
     <table class='content-table'>
 <td>
-        <h2> CNAME: {{user.companyName}} </h2>
-        <h2> EMAIL: {{user.email}} </h2>
-        <h2> PHONE: {{user.phone}} </h2>
-        <h2> IS_OK: {{user.is_ok}} </h2>
-        <h2> License: <a href="{{user.License.url}}" download> {{user.License}}</h2></a>
-        <h2> Certificate: <a href="{{user.certificate.url}}" download> {{user.certificate}}</h2></a>
+        <pre class="tab"><h2><u>CNAME </u> :        {{user.companyName}}</h2></pre>
+        <pre class="tab"><h2><u>EMAIL </u> :        {{user.email}} </h2></pre>
+        <pre class="tab"><h2><u>PHONE</u> :         {{user.phone}} </h2></pre>
+        <pre class="tab"><h2><u>IS_OK</u> :         {{user.is_ok}} </h2></pre>
+        <pre class="tab"><h2><u>License</u> : </h2>                         <img src="{{user.License.url}}" height="250" width="300" ></pre>
+        <pre class="tab"><h2><u>Certificate</u> : </h2>                     <img src="{{user.certificate.url}}" height="250" width="300" ></pre>
+
 </td>
     </table>
     <script src="" async defer></script>
