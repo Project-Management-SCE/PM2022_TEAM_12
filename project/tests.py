@@ -18,3 +18,5 @@ class ManageUsersTest(TestCase):
                                         first_name='first_name')
         self.user.set_password('password')
         self.user.save()
+
+        
