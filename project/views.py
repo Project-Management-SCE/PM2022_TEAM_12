@@ -5,7 +5,7 @@ from email.message import EmailMessage
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import authenticate,logout
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as LL
 from project.models import User,Driver,Updates
 from project.forms import contactformemail
@@ -188,6 +188,10 @@ def decline(request,id):
     obj.delete()
     return redirect('AdminHomePage')    
 
+def logout_user(request):
+    logout(request)
+    message.add_message(request, message.success,'successfully logout')
+    return redirect(reverse('login'))
 
 def SendMail(request):
     if request.method=="POST":
