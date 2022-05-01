@@ -22,4 +22,7 @@ class Updates(models.Model):
 
     class Meta:
         db_table = 'Updates'
+
+
+
     
