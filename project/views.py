@@ -190,8 +190,7 @@ def decline(request,id):
 
 def logout_user(request):
     logout(request)
-    message.add_message(request, message.success,'successfully logout')
-    return redirect(reverse('login'))
+    return redirect('login')
 
 def SendMail(request):
     if request.method=="POST":
