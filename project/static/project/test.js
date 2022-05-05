@@ -9,8 +9,15 @@ function initMap() {
   directionsRenderer.setMap(map);
   calculateAndDisplayRoute(directionsService, directionsRenderer);
 }
+function updatefunc(){
+  var deptime=document.querySelector('input[type="datetime-local"]').value;
+  date=new Date(deptime);
+  console.log(deptime)
+}
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+  date=new Date('May 5, 2022 19:01:00');
+  console.log(date.getTime()/1000)
   origin=document.getElementById("frfr").value.toString();
   dest=document.getElementById("toto").value.toString();
   console.log(origin)
@@ -20,7 +27,8 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
       origin:origin,
       destination:dest,
       travelMode:"TRANSIT",
-      region:"israel"
+      region:"israel",
+      transitOptions:{departureTime:date},
     })
     .then((response) => {
       directionsRenderer.setDirections(response);
