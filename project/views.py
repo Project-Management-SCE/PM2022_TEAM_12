@@ -228,3 +228,15 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+def DriverNotification(request):
+     return render(request,'project/DriverNotification.html')
+
+
+
+def NotificationByDriver(request):
+     return render(request,'project/NotificationByDriver.html')
+
+def PassengerNotification(request):
+     return render(request,'project/PassengerNotification.html')
+
+
