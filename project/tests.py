@@ -36,7 +36,7 @@ class ManageUsersTest(TestCase):
         self.user.save() '''
 
 
-class AdminMessageFormTests(TestCase): 
+class PassengerHomePageTests(TestCase): 
 
     def test_PassengerHomePage(self):
         c = Client()
@@ -50,11 +50,37 @@ class AdminMessageFormTests(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateNotUsed(response, 'DriverNotification.html')  
 
-    def test_AddNewDriver(self):
+    def test_AddNewDriver1(self):
        c = Client()
        response = c.get(reverse('AddNewDriver'))
        self.assertEquals(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AddNewDriver.html')  
+
+
+    def test_AddNewDriver2(self):
+       c = Client()
+       response = c.get(reverse('AddNewDriver'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AddNewDriver/SendMail.html') 
+
+    def test_AddNewDriver3(self):
+       c = Client()
+       response = c.get(reverse('AddNewDriver'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AddNewDriver/DriverDetails.html')   
+
+    def test_AddNewDriver4(self):
+       c = Client()
+       response = c.get(reverse('AddNewDriver'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AddNewDriver/deluser.html') 
+
+    def test_AddNewDriver5(self):
+       c = Client()
+       response = c.get(reverse('AddNewDriver'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AddNewDriver/Raquest.html')          
+
 
     def test_PageHome1(self):
        c = Client()
@@ -72,4 +98,28 @@ class AdminMessageFormTests(TestCase):
        c = Client()
        response = c.get(reverse('index'))
        self.assertEquals(response.status_code, 200)
-       self.assertTemplateNotUsed(response, 'index/DriverSignup.html')        
+       self.assertTemplateNotUsed(response, 'index/DriverSignup.html')
+
+    def test_AdminHomePage1(self):
+       c = Client()
+       response = c.get(reverse('AdminHomePage'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AdminHomePage.html')  
+
+    def test_AdminHomePage2(self):
+       c = Client()
+       response = c.get(reverse('AdminHomePage'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AdminHomePage/SendMail.html')   
+
+    def test_AdminHomePage3(self):
+       c = Client()
+       response = c.get(reverse('AdminHomePage'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AdminHomePage/AddNewDriver.html')  
+
+    def test_AdminHomePage4(self):
+       c = Client()
+       response = c.get(reverse('AdminHomePage'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AdminHomePage/DriverDetails.html')                    
