@@ -18,7 +18,8 @@ class Driver(User):
 
 class Updates(models.Model):
     senderID=models.CharField(max_length=100,default='')
-    message=models.CharField(max_length=10,default='')
+    BusLine=models.CharField(max_length=100,default='')
+    message=models.CharField(max_length=100,default='')
 
     class Meta:
         db_table = 'Updates'
