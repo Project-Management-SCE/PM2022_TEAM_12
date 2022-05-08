@@ -240,12 +240,13 @@ class PassengerHomePageTests(TestCase):
       self.assertEquals(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'Signup.html')
 
+    '''
     def test_Requset(self):
       c = Client()
       response = c.get(reverse('Requset'))
       self.assertEquals(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'Requset.html')
-
+    '''
     
     def test_PassengerNotification1(self):
       c = Client()
