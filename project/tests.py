@@ -36,15 +36,15 @@ class ManageUsersTest(TestCase):
 
 # ------------tests for some admin functionality  ------     -- ------------------
 #@tag("unit_test")
-class AdminMessageFormTests(TestCase):
+class pagehoameTests(TestCase):
     @tag('unit-test')
     def test_Add_Message_GET(self):
         c = Client()
-        response = c.get(reverse('createmessage'))
+        response = c.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'admin_templates/admin_message_form.html')
+        self.assertTemplateUsed(response, 'signup')
 
-    @tag('unit-test')
+  '''  @tag('unit-test')
     def test_Add_Message_GET2(self):
         c = Client()
         response = c.get(reverse('createmessage'))
