@@ -122,4 +122,10 @@ class PassengerHomePageTests(TestCase):
        c = Client()
        response = c.get(reverse('AdminHomePage'))
        self.assertEquals(response.status_code, 200)
-       self.assertTemplateNotUsed(response, 'AdminHomePage/DriverDetails.html')                    
+       self.assertTemplateNotUsed(response, 'AdminHomePage/DriverDetails.html')  
+
+    def test_AdminHomePage5(self):
+       c = Client()
+       response = c.get(reverse('AdminHomePage'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AdminHomePage/deluser.html')                       
