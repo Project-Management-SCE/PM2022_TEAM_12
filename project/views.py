@@ -52,9 +52,9 @@ def login(request):
             if user.is_authenticated and user.is_passenger :
                 return redirect('PassengerHomePage') #Go to student home
             elif Driver.objects.filter(username=user.username):
-                return redirect('DriverHomePage') #Go to teacher home
+                return redirect('DriverHomePage') #Go to  home
             elif user.is_authenticated and user.is_Admin==True :
-                return redirect('AdminHomePage') #Go to teacher home
+                return redirect('AdminHomePage') #Go to  home
         else:
             messages.error(request,"Invalid email or password")
             return redirect('login')
@@ -239,11 +239,14 @@ def DriverNotification(request):
         return redirect('DriverHomePage')
     return render(request,'project/DriverNotification.html')
 
-def NotificationByDriver(request):
-
-     return render(request,'project/NotificationByDriver.html')
+def NotificationByDriver(request,busLine):  
+    user=Updates.objects.filter(BusLine=busLine)
+    return render(request,'project/NotificationByDriver.html',{'updates':user})  
 
 def PassengerNotification(request):
-     return render(request,'project/PassengerNotification.html')
+    if request.method == "POST":
+        busline=request.POST.get('bus_line')
+        return redirect('NotificationByDriver',busline)
+    return render(request,'project/PassengerNotification.html')
 
 

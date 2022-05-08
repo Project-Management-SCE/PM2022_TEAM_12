@@ -29,11 +29,9 @@
 
         </header>
         <div class="container">
-            <form action="" method="POST" class="contact-form">
+            <form class="contact-form">
                 {% csrf_token %}
                
-
-
                 <div class="form-control">
                     <div class="tag"> Enter The Bus Line </div>
                     <input type="text" name="bus_line">
@@ -42,7 +40,8 @@
                 <br>
                 <br>
                 <div class="form-control">
-                    <input type="Submit" class="btn submit-btn" value="Get Notification">
+
+                    <a href="{% url 'NotificationByDriver' bus_line %}"> Get Notification </a>
 
                 </div>
 

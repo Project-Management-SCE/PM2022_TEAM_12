@@ -24,6 +24,8 @@ urlpatterns = [
     path('<int:id>', views.details,name='detail'),
     path('<int:id>/"',views.accept,name="Accept"),
     path('<int:id>//',views.decline,name="Decline"),
+    #path('<int:busline>///', views.NotificationByDriver,name='NotificationByDriver'),
+
      path('map/',views.tripinfo,name="tripinfo"),
     path('PassengerGetDic/',views.PassengerGetDic,name="PassengerGetDic"),
      path('DriverDetails/',views.DriverDetails,name="DriverDetails"),
@@ -31,7 +33,7 @@ urlpatterns = [
      path('delete/<int:id>',views.delete,name="delete"),
     path('deleteDriver/<int:id>',views.deleteDriver,name="deleteDriver"),
     path('logoutUser', views.logoutUser, name='logoutUser'),
-    path('NotificationByDriver/',views.NotificationByDriver,name="NotificationByDriver"),
+    path('<int:busline>',views.NotificationByDriver,name="NotificationByDriver"),
     path('PassengerNotification/',views.PassengerNotification,name="PassengerNotification"),
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
 
