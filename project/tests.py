@@ -20,6 +20,7 @@ class LogoutTest(TestCase):
        self.assertEqual(response.status_code, 200)
        self.assertFalse(response.context["user"].is_authenticated)
 
+<<<<<<< Updated upstream
 class ManageUsersTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='username', email='email',
@@ -27,12 +28,15 @@ class ManageUsersTest(TestCase):
                                         first_name='first_name')
         self.user.set_password('password')
         self.user.save()
+=======
+>>>>>>> Stashed changes
 ########################new test#####################
 
 
 
 
 
+<<<<<<< Updated upstream
 '''
 # ------------tests for some admin functionality  ------     -- ------------------
 class pagehoameTests(TestCase):
@@ -55,4 +59,18 @@ class pagehoameTests(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'teacher_templates/message_form.html')
 '''
+=======
+
+# ------------tests for some admin functionality  ------     -- ------------------
+#@tag("unit_test")
+class PagehomeTests(TestCase):
+    #@tag('unit-test')
+    def test_ passegers_register(self):
+        c = Client()
+        response = c.get(reverse('index'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'signupasdesfaef')
+
+
+>>>>>>> Stashed changes
 
