@@ -33,7 +33,7 @@ urlpatterns = [
      path('delete/<int:id>',views.delete,name="delete"),
     path('deleteDriver/<int:id>',views.deleteDriver,name="deleteDriver"),
     path('logoutUser', views.logoutUser, name='logoutUser'),
-    path('<int:busline>',views.NotificationByDriver,name="NotificationByDriver"),
+    path('NotificationByDriver',views.NotificationByDriver,name="NotificationByDriver"),
     path('PassengerNotification/',views.PassengerNotification,name="PassengerNotification"),
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
 

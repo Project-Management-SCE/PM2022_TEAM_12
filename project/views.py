@@ -239,14 +239,14 @@ def DriverNotification(request):
         return redirect('DriverHomePage')
     return render(request,'project/DriverNotification.html')
 
-def NotificationByDriver(request,busLine):  
-    user=Updates.objects.filter(BusLine=busLine)
-    return render(request,'project/NotificationByDriver.html',{'updates':user})  
+def NotificationByDriver(request):  
+    return render(request,'project/NotificationByDriver.html')  
 
 def PassengerNotification(request):
     if request.method == "POST":
         busline=request.POST.get('bus_line')
-        return redirect('NotificationByDriver',busline)
+        user=Updates.objects.filter(BusLine=busline)
+        return render(request,'project/NotificationByDriver.html',{'updates':user})
     return render(request,'project/PassengerNotification.html')
 
 
