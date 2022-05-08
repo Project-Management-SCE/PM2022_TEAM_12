@@ -20,46 +20,12 @@ class LogoutTest(TestCase):
        self.assertEqual(response.status_code, 200)
        self.assertFalse(response.context["user"].is_authenticated)
 
-<<<<<<< Updated upstream
-class ManageUsersTest(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username='username', email='email',
-                                        last_name='last_name',
-                                        first_name='first_name')
-        self.user.set_password('password')
-        self.user.save()
-=======
->>>>>>> Stashed changes
 ########################new test#####################
 
 
 
 
 
-<<<<<<< Updated upstream
-'''
-# ------------tests for some admin functionality  ------     -- ------------------
-class pagehoameTests(TestCase):
-    @tag('unit-test')
-    def test_Add_Message_GET(self):
-        c = Client()
-        response = c.get(reverse('index'))
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'signup')
-
-    def test_Add_Message_GET2(self):
-        c = Client()
-        response = c.get(reverse('createmessage'))
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateNotUsed(response, 'teacher_templates/message_form.html')
-
-    def test_Add_Teacher_Message_GET(self):
-        c = Client()
-        response = c.get(reverse('create_teacher_message'))
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'teacher_templates/message_form.html')
-'''
-=======
 
 # ------------tests for some admin functionality  ------     -- ------------------
 #@tag("unit_test")
@@ -72,5 +38,4 @@ class PagehomeTests(TestCase):
         self.assertTemplateUsed(response, 'signupasdesfaef')
 
 
->>>>>>> Stashed changes
 
