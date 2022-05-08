@@ -194,7 +194,39 @@ class PassengerHomePageTests(TestCase):
       c = Client()
       response = c.get(reverse('login'))
       self.assertEquals(response.status_code, 200)
-      self.assertTemplateNotUsed(response, 'login/PassengerHomePage.html')        
+      self.assertTemplateNotUsed(response, 'login/PassengerHomePage.html')
+
+    def test_login4(self):
+      c = Client()
+      response = c.get(reverse('login'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'login/DriverHomePage.html')
+
+    def test_NotificationByDriver(self):
+      c = Client()
+      response = c.get(reverse('NotificationByDriver'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'NotificationByDriver.html')
+
+    def test_PassengerNotification(self):
+      c = Client()
+      response = c.get(reverse('NotificationByDriver'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'NotificationByDriver/PassengerNotification.html')   
+
+
+    def test_PassengerNotification_logout(self):
+      c = Client()
+      response = c.get(reverse('NotificationByDriver'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'NotificationByDriver/login.html')
+
+    def test_PassengerNotification_home_pagre(self):
+      c = Client()
+      response = c.get(reverse('NotificationByDriver'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'NotificationByDriver/PassengerHomePage.html')                
+            
 
 
        
