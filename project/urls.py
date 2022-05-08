@@ -30,7 +30,6 @@ urlpatterns = [
      path('deluser/',views.deluser,name="deluser"),
      path('delete/<int:id>',views.delete,name="delete"),
     path('deleteDriver/<int:id>',views.deleteDriver,name="deleteDriver"),
-    path('logout', views.logoutUser, name='logout'),
-
+    path('logoutUser', views.logoutUser, name='logoutUser'),
 
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
