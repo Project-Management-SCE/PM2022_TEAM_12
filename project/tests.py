@@ -225,8 +225,33 @@ class PassengerHomePageTests(TestCase):
       c = Client()
       response = c.get(reverse('NotificationByDriver'))
       self.assertEquals(response.status_code, 200)
-      self.assertTemplateNotUsed(response, 'NotificationByDriver/PassengerHomePage.html')                
-            
+      self.assertTemplateNotUsed(response, 'NotificationByDriver/PassengerHomePage.html') 
+
+    def test_SendMail(self):
+     c = Client()
+     response = c.get(reverse('SendMail'))
+     self.assertEquals(response.status_code, 200)
+     self.assertTemplateNotUsed(response, 'SendMail.html')
+
+
+    def test_Signup(self):
+      c = Client()
+      response = c.get(reverse('Signup'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'Signup.html')
+
+    def test_Requset(self):
+      c = Client()
+      response = c.get(reverse('Requset'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'Requset.html')
+
+    
+    def test_PassengerNotification1(self):
+      c = Client()
+      response = c.get(reverse('PassengerNotification'))
+      self.assertEquals(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'PassengerNotification.html')               
 
 
        
