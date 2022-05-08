@@ -36,7 +36,6 @@ def index(request):
 
 def abouthome(request):
     return HttpResponse("Home page")
-
 def add(request,a,b):
     return HttpResponse(a+b)
 def myfirstpage(request):
@@ -57,12 +56,13 @@ def login(request):
             elif user.is_authenticated and user.is_Admin==True :
                 return redirect('AdminHomePage') #Go to teacher home
         else:
-            A=Updates(senderID=username,message="pass1")
-            A.save()
             messages.error(request,"Invalid email or password")
             return redirect('login')
 
     return render(request,'project/login.html')
+
+
+
 
 def signup(request):
 
@@ -228,12 +228,19 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+@csrf_exempt
 def DriverNotification(request):
-     return render(request,'project/DriverNotification.html')
-
-
+    if request.method == "POST":
+        senderID=request.user.username
+        message=request.POST.get('Notification')
+        bussNum=request.POST.get('BusNum')
+        A=Updates(senderID=senderID,BusLine=bussNum,message=message)
+        A.save()
+        return redirect('DriverHomePage')
+    return render(request,'project/DriverNotification.html')
 
 def NotificationByDriver(request):
+
      return render(request,'project/NotificationByDriver.html')
 
 def PassengerNotification(request):

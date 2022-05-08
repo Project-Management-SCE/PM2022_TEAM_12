@@ -1,17 +1,24 @@
-
-from django.test import TestCase, tag
-from django.urls import reverse
-from project.models import *
-##################################################################
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
-from django.test import TestCase,tag
-from django.urls import reverse
-from django.test import Client
+import django
+from django.test import TestCase,SimpleTestCase,Client
+from django.urls import reverse,resolve
 from .models import *
-import requests
-  
-  # Create your tests here.
+from .views import *
+from .forms import *
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+'''
+class ViewTest(TestCase):
+    def test_login(self):
+        self.client.login(username='areen', password='123123')
+        response = self.client.get('/Login/')
+        self.assertContains(response, 'login', 4, 200)
+class medelsTest(TestCase):
+    def test_create_message(self):
+        message1=Updates.objects.create(message="title for messs",senderID="areen")
+        message1.save()
+        self.assertEqual(str(message1),"title for messs")
+
+'''
 class LogoutTest(TestCase):
    def testLogout(self):
        User.objects.create(username='aren', password='123123')
@@ -19,23 +26,50 @@ class LogoutTest(TestCase):
        response = self.client.get(reverse('logoutUser'), follow=True)
        self.assertEqual(response.status_code, 200)
        self.assertFalse(response.context["user"].is_authenticated)
+'''
+class ManageUsersTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='username', email='email',
+                                        last_name='last_name',
+                                        first_name='first_name')
+        self.user.set_password('password')
+        self.user.save() '''
 
-########################new test#####################
 
+class AdminMessageFormTests(TestCase): 
 
-
-
-
-
-# ------------tests for some admin functionality  ------     -- ------------------
-#@tag("unit_test")
-class PagehomeTests(TestCase):
-    #@tag('unit-test')
-    def test_ passegers_register(self):
+    def test_PassengerHomePage(self):
         c = Client()
-        response = c.get(reverse('index'))
+        response = c.get(reverse('PassengerHomePage'))
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'signupasdesfaef')
+        self.assertTemplateNotUsed(response, 'PassengerHomePage.html')
 
+    def test_DriverNotification(self):
+        c = Client()
+        response = c.get(reverse('DriverNotification'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateNotUsed(response, 'DriverNotification.html')  
 
+    def test_AddNewDriver(self):
+       c = Client()
+       response = c.get(reverse('AddNewDriver'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'AddNewDriver.html')  
 
+    def test_PageHome1(self):
+       c = Client()
+       response = c.get(reverse('index'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'index/signup.html') 
+
+    def test_PageHome2(self):
+       c = Client()
+       response = c.get(reverse('index'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'index/login.html')        
+
+    def test_PageHome3(self):
+       c = Client()
+       response = c.get(reverse('index'))
+       self.assertEquals(response.status_code, 200)
+       self.assertTemplateNotUsed(response, 'index/DriverSignup.html')        
