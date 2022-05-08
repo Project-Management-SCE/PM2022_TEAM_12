@@ -238,7 +238,7 @@ class PassengerHomePageTests(TestCase):
       c = Client()
       response = c.get(reverse('Signup'))
       self.assertEquals(response.status_code, 200)
-      self.assertTemplateNotUsed(response, 'Signup.html')
+      self.assertTemplateNotUsed(response, 'signup.html')
 
     '''
     def test_Requset(self):
