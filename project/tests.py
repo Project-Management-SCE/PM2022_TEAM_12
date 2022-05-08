@@ -16,7 +16,7 @@ class LogoutTest(TestCase):
    def testLogout(self):
        User.objects.create(username='aren', password='123123')
        self.client.login(username='username',password='password')
-       response = self.client.get(reverse('logout'), follow=True)
+       response = self.client.get(reverse('logoutUser'), follow=True)
        self.assertEqual(response.status_code, 200)
        self.assertFalse(response.context["user"].is_authenticated)
 
