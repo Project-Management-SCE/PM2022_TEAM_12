@@ -79,7 +79,7 @@ class PassengerHomePageTests(TestCase):
        c = Client()
        response = c.get(reverse('AddNewDriver'))
        self.assertEquals(response.status_code, 200)
-       self.assertTemplateNotUsed(response, 'AddNewDriver/Raquest.html')          
+       self.assertTemplateNotUsed(response, 'AddNewDriver/Request.html')          
 
 
     def test_PageHome1(self):
