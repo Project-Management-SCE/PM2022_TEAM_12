@@ -234,6 +234,7 @@ class PassengerHomePageTests(TestCase):
      self.assertTemplateNotUsed(response, 'SendMail.html')
 
 
+
     def test_Signup(self):
       c = Client()
       response = c.get(reverse('signup'))
