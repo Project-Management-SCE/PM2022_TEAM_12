@@ -9,7 +9,7 @@
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     </head>
 <body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
-    <form action="" method="POST">
+  <form action="" method="POST">
         {% csrf_token %}
         <header class="header">
             <a href="#" class="logo">
@@ -19,9 +19,6 @@
             <nav class="navbar">
                 <a href="/PassengerHomePage">Home</a>
                 <a href="/logoutUser">LogOut</a>
-                <a href="/PassengerNotification">Notification</a>
-                <a href="/PassengerChangePassword">Change Password</a>
-                <a href="/PMyTrip">My Trip</a>
 
             </nav>
         </header>
@@ -29,25 +26,6 @@
             <form action="" method="POST" class="contact-form">
                 {% csrf_token %}
 
-                <div class="form-control">
-                    <div class="tag"> Old Password</div>
-                    <input type="password" name="full_name">
-                </div>
-
-                <div class="form-control">
-                    <div class="tag">New Password</div>
-                    <input type="password" name="email">
-                </div>
-
-                <div class="form-control">
-                    <div class="tag">confirrm</div>
-                    <input type="password" name="confirmPassword">
-                </div>
-                
-                <div class="form-control">
-                    <input type="Submit" class="btn submit-btn" value="Save">
-
-                </div>
 
 
 

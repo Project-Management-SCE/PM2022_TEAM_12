@@ -257,7 +257,7 @@ def PassengerNotification(request):
 def DriverChangePassword(request):
      return render(request,'project/DriverChangePassword.html')
 
-def PassengerChangePassword(request):
-     return render(request,'project/PassengerChangePassword.html')
 
 
+def OrderTrip(request):
+    return render(request,'project/OrderTrip.html')

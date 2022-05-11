@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -12,7 +13,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
-    <body>
+  <body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
+  <form action="" method="POST">
+        {% csrf_token %}
     <header class="header">
     <nav class="navbar">
 
@@ -64,11 +67,12 @@
             margin: 0 1rem;
             font-size: 1.6rem;
             color:#fff;
+            
 
 
         }
          .header{
-            background: #474c91;
+            background: #AF2D18;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -77,6 +81,7 @@
             position: fixed;
             top: 0; left:0; right:0;
             z-index: 1000;
+          
 
         }
        .header  .navbar a:hover{

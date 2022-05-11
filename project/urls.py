@@ -26,8 +26,6 @@ urlpatterns = [
     path('<int:id>//',views.decline,name="Decline"),
     #path('<int:busline>///', views.NotificationByDriver,name='NotificationByDriver'),
 
-
-    path('PassengerChangePassword/',views.PassengerChangePassword,name="PassengerChangePassword"),
     path('DriverChangePassword/',views.DriverChangePassword,name="DriverChangePassword"),
 
      path('map/',views.tripinfo,name="tripinfo"),
@@ -41,7 +39,7 @@ urlpatterns = [
     path('PassengerNotification/',views.PassengerNotification,name="PassengerNotification"),
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
-
+    path('OrderTrip/',views.OrderTrip,name="OrderTrip"),
 
 
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
