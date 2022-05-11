@@ -169,6 +169,11 @@ def Request(request):
     userList= Driver.objects.filter(is_ok=False)
     return render(request, 'project/Request.html', {'users': userList})
 
+def PMyTrip(request):
+     return render(request,'project/PMyTrip.html')
+
+
+
 def DriverDetails(request):
     user= Driver.objects.filter(is_ok=True)
     return render(request,'project/DriverDetails.html',{'users': user})
@@ -248,5 +253,11 @@ def PassengerNotification(request):
         user=Updates.objects.filter(BusLine=busline)
         return render(request,'project/NotificationByDriver.html',{'updates':user})
     return render(request,'project/PassengerNotification.html')
+
+def DriverChangePassword(request):
+     return render(request,'project/DriverChangePassword.html')
+
+def PassengerChangePassword(request):
+     return render(request,'project/PassengerChangePassword.html')
 
 
