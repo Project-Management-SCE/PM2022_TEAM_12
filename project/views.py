@@ -261,3 +261,5 @@ def DriverChangePassword(request):
 
 def OrderTrip(request):
     return render(request,'project/OrderTrip.html')
+def MyDrive(request):
+    return render(request,'project/MyDrive.html')
