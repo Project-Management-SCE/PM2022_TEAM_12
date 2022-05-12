@@ -18,14 +18,14 @@
           
             <nav class="navbar">
                 
-                <a href="/PassengerPassword">Change Password</a>
+                <a href="{% url 'PassengerPassword' user.id %}">Change Password</a>
 
                 <a href="/PassengerHomePage">Home</a>
                 <a href="/logoutUser">LogOut</a>
                 <a href="/PassengerNotification">Notification</a>
                 <a href="/PMyTrip">My Trip</a>
                  <a href="/OrderTrip">OrderTrip</a>
-                 <a href="/PassengerProfile">Profile</a>
+                 <a href="{% url 'PassengerProfile' user.id %}">Profile</a>
 
 
 

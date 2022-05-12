@@ -145,12 +145,11 @@ def PassengerHomePage(request):
 def PassengerGetDic(request):
     return render(request,'project/PassengerGetDic.html')
 
-def PassengerProfile(request):
-    return render(request,'project/PassengerProfile.html')
+def PassengerProfile(request,id):
+    user=get_object_or_404(User,id=id)
+    return render(request,'project/PassengerProfile.html',{'user':user})
 
 
-def PassengerPassword(request):
-    return render(request,'project/PassengerPassword.html')
 
 
 
@@ -244,7 +243,6 @@ def deleteDriver(request,id):
     obj=get_object_or_404(Driver,id=id)
     obj.delete()
     return redirect('DriverDetails') 
-
 
 def logoutUser(request):
     logout(request)
