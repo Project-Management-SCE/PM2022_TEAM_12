@@ -14,8 +14,13 @@ urlpatterns = [
     path('Login/',views.login,name="login"),
     path('signup/',views.signup,name="signup"),
     path('AdminReports/',views.AdminReports,name="AdminReports"),
+    #path('PassengerProfile/',views.PassengerProfile,name="PassengerProfile"),
+    path('PassengerPassword/<int:id>',views.PassengerPassword,name="PassengerPassword"),
+    path('<int:id>///',views.PassengerProfile,name="PassengerProfile"),
 
     
+    
+
     path('DriverSignup/',views.DriverSignup,name="DriverSignup"),
     path('AdminHomePage/',views.AdminHomePage,name="AdminHomePage"),
     path('AddNewDriver/',views.AddNewDriver,name="AddNewDriver"),
