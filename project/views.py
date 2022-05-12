@@ -140,8 +140,20 @@ def PassengerHomePage(request):
     print("***************************************")
 
     return render(request,'project/PassengerHomePage.html')
+
+
 def PassengerGetDic(request):
     return render(request,'project/PassengerGetDic.html')
+
+def PassengerProfile(request):
+    return render(request,'project/PassengerProfile.html')
+
+
+def PassengerPassword(request):
+    return render(request,'project/PassengerPassword.html')
+
+
+
 
 
 def tripinfo(request):

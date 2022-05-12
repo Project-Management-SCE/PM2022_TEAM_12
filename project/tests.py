@@ -266,20 +266,20 @@ class PassengerHomePageTests(TestCase):
 
 
     def testPassengerHomePage_integration_test(self):
-        
-        data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
-        data_register = {'email1': 'nursery', 'email2': 'Harvesting / training the locality'}
+ 
+      data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
+      data_register = {'email1': 'nursery', 'email2': 'Harvesting / training the locality'}
 
-        response = self.client.post(reverse('PassengerHomePage'), data=data_register, follow=True)
+      response = self.client.post(reverse('PassengerHomePage'), data=data_register, follow=True)
 
-        self.assertEqual(response.status_code, 200)
-
-
-        response = self.client.post(reverse('PassengerGetDic'), data=data_login, follow=True)
+      self.assertEqual(response.status_code, 200)
 
 
-        self.assertTemplateUsed(response, 'PassengerGetDic.html')
-        self.assertRedirects(response, reverse('PassengerGetDic'))         
+      response = self.client.post(reverse('PassengerGetDic'), data=data_login, follow=True)
+
+
+      self.assertTemplateUsed(response, 'PassengerGetDic.html')
+      self.assertRedirects(response, reverse('PassengerGetDic'))         
 
    
        
