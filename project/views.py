@@ -107,6 +107,11 @@ def DriverSignup(request):
 def AdminHomePage(request):
     return render(request,'project/AdminHomePage.html')
 
+def AdminReports(request):
+    return render(request,'project/AdminReports.html')
+
+
+
 def AddNewDriver(request):
     if request.method == "POST":
         name=request.POST.get('name')
