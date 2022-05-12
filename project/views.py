@@ -149,7 +149,19 @@ def PassengerProfile(request,id):
     user=get_object_or_404(User,id=id)
     return render(request,'project/PassengerProfile.html',{'user':user})
 
+def PassengerPassword(request,id):
+    user=get_object_or_404(User,id=id)
 
+    if request.method=="POST":
+        old_pass=request.POST.get('full_name')
+        new_pass=request.POST.get('email')
+        cpass=request.POST.get('confirmPassword')
+        user1 = authenticate(username=user.username,password=old_pass)
+        if user1 is not None and new_pass==cpass:
+            user1.set_password(new_pass)
+            user1.save()
+            return render(request,'project/PassengerHomePage.html',{'user':user})
+    return render(request,'project/PassengerPassword.html',{'user':user})
 
 
 
