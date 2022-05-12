@@ -13,6 +13,9 @@ urlpatterns = [
     path('myfirstpage',views.myfirstpage,name='myfirstpage'),
     path('Login/',views.login,name="login"),
     path('signup/',views.signup,name="signup"),
+    path('AdminReports/',views.AdminReports,name="AdminReports"),
+
+    
     path('DriverSignup/',views.DriverSignup,name="DriverSignup"),
     path('AdminHomePage/',views.AdminHomePage,name="AdminHomePage"),
     path('AddNewDriver/',views.AddNewDriver,name="AddNewDriver"),
