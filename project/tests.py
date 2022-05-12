@@ -5,6 +5,12 @@ from .models import *
 from .views import *
 from .forms import *
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+#from App.models import *
+import requests
+
+
 
 '''
 class ViewTest(TestCase):
@@ -253,7 +259,26 @@ class PassengerHomePageTests(TestCase):
       c = Client()
       response = c.get(reverse('PassengerNotification'))
       self.assertEquals(response.status_code, 200)
-      self.assertTemplateNotUsed(response, 'PassengerNotification.html')               
+      self.assertTemplateNotUsed(response, 'PassengerNotification.html')  
+
+####################################integration-test########################
+
+
+    def testRegisterStudentAndLogin(self):
+        
+        data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
+        data_register = {'first_name': 'aa', 'last_name': '1234'}
+
+        response = self.client.post(reverse('index'), data=data_register, follow=True)
+
+        self.assertEqual(response.status_code, 200)
+
+
+        response = self.client.post(reverse('Login'), data=data_login, follow=True)
+
+
+        self.assertTemplateUsed(response, 'Login.html')
+        self.assertRedirects(response, reverse('Login'))         
 
 
        
