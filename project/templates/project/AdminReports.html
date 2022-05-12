@@ -89,14 +89,9 @@
 
 
             </a>
-            <nav class="navbar">
-                <a href="/Request/">Request</a>
-                <a href="/deluser/">Passengers</a>
-                <a href="/DriverDetails/">Drivers</a>
-                <a href="/AddNewDriver/">Add New Driver</a>
-                <a href="/SendMail/">Send Email</a>
-                <a href="/logoutUser">LogOut</a>
-                <a href="/AdminReports">Reports</a>
+            <nav class="navbar">              
+                <b href="/logoutUser">LogOut</b>
+          
 
 
 
@@ -108,4 +103,30 @@
 
 
     </body>
+<style>
+  .header{
+            background: #AF2D18;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: -1rem;
+            border-bottom: var(--border);
+            position: fixed;
+            top: 0; left:0; right:0;
+            z-index: 1000;
+
+        }
+ .header .navbar b{
+            margin: 0 5rem;
+            font-size: 1.6rem;
+            color:#fff;
+
+
+        }
+        .header .navbar b:hover{
+            color: var(--main-color);
+            border-bottom: .1rem solid var(--main-color);
+            padding-bottom: .5rem;
+        }
+</style>
 </html>
