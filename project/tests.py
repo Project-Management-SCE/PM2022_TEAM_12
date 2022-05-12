@@ -1,4 +1,5 @@
 import django
+
 from django.test import TestCase,SimpleTestCase,Client
 from django.urls import reverse,resolve
 from .models import *
@@ -7,7 +8,7 @@ from .forms import *
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
-#from App.models import *
+
 import requests
 
 
@@ -264,25 +265,26 @@ class PassengerHomePageTests(TestCase):
 ####################################integration-test########################
 
 
-    def testRegisterStudentAndLogin(self):
-        
-        data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
-        data_register = {'first_name': 'aa', 'last_name': '1234'}
+    def testPassengerHomePage_integration_test(self):
+ 
+      data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
+      data_register = {'email1': 'nursery', 'email2': 'Harvesting / training the locality'}
 
-        response = self.client.post(reverse('index'), data=data_register, follow=True)
+      response = self.client.post(reverse('PassengerHomePage'), data=data_register, follow=True)
 
-        self.assertEqual(response.status_code, 200)
-
-
-        response = self.client.post(reverse('Login'), data=data_login, follow=True)
+      self.assertEqual(response.status_code, 200)
 
 
-        self.assertTemplateUsed(response, 'Login.html')
-        self.assertRedirects(response, reverse('Login'))         
+      response = self.client.post(reverse('PassengerGetDic'), data=data_login, follow=True)
 
 
+      self.assertTemplateUsed(response, 'PassengerGetDic.html')
+      self.assertRedirects(response, reverse('PassengerGetDic'))         
+
+   
        
 
 
        
-                                  
+         
+
