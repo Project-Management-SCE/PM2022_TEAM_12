@@ -1,5 +1,6 @@
 import django
 
+from django.db import models
 from django.test import TestCase,SimpleTestCase,Client
 from django.urls import reverse,resolve
 from .models import *
@@ -262,29 +263,25 @@ class PassengerHomePageTests(TestCase):
       self.assertEquals(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'PassengerNotification.html')  
 
+    
+
 ####################################integration-test########################
 
+class testPassengerHomePage_integration_test_class(TestCase): 
 
-    def testPassengerHomePage_integration_test(self):
- 
-      data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
-      data_register = {'email1': 'nursery', 'email2': 'Harvesting / training the locality'}
+   def testRegisterStudentAndLogin_new(self):
+        #User.objects.create(username='aa', password='aa'
+       data_login=User.objects.create ({'password':'1234'}) #+ User.objects.create = ({'name':'Areen'})
+       data_login=User.objects.create({'fromm':'from the coutry.'})# + User.objects.create({ 'tooo':'to bus station'})
 
-      response = self.client.post(reverse('PassengerHomePage'), data=data_register, follow=True)
+       response = self.client.post(reverse('login'), data=data_register, follow=True)
 
-      self.assertEqual(response.status_code, 200)
-
-
-      response = self.client.post(reverse('PassengerGetDic'), data=data_login, follow=True)
+       self.assertEqual(response.status_code, 200)
 
 
-      self.assertTemplateUsed(response, 'PassengerGetDic.html')
-      self.assertRedirects(response, reverse('PassengerGetDic'))         
-
-   
-       
+       response = self.client.post(reverse('PassengerHomePage'), data=data_login, follow=True)
 
 
-       
-         
+       self.assertTemplateUsed(response, 'PassengerHomePage.html')
+       self.assertRedirects(response, reverse('PassengerHomePage'))
 

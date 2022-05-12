@@ -19,7 +19,7 @@
                 <a href="/PassengerHomePage">Home</a>
                 <a href="/logoutUser">LogOut</a>
                 <a href="/PassengerNotification">Notification</a>
-                <a href="/PassengerNotification">Change Password</a>
+                <a href="/PassengerPPassword">Change Password</a>
                 <a href="/PMyTrip">My Trip</a>
                 <a href="/PassengerProfile">Profile</a>
             </nav>
@@ -41,46 +41,46 @@
     margin-left: 639px;
                 ">
 
-                    <div class="inputfield" style="  margin-left: 25px;
+                    <div class="outputfield" style="  margin-left: 25px;
                                                      margin-top: 30px;
                                                      width: 125px;
                                                      color: #FFFFFF;
                                                     font-size: 17px;
                                                     font-weight: 700;">
                         <label>First Name</label>
-                        <input type="text" id="Fname" name="Fname">
+                        <input type="text" id="Fname" name="Fname" value={{user.first_name}}>
                     </div>
 
-                    <div class="inputfield" style="  margin-left: 25px;
+                    <div class="outputfield" style="  margin-left: 25px;
                                                      margin-top: 30px;
                                                      width: 125px;
                                                      color: #FFFFFF;
                                                     font-size: 17px;
                                                     font-weight: 700;">
                         <label>Last Name</label>
-                        <input type="text" id="Lname" name="Lname">
+                        <input type="text" id="Lname" name="Lname" value={{user.last_name}}>
 
                     </div>
 
 
-                    <div class="inputfield" style="  margin-left: 25px;
+                    <div class="outputfield" style="  margin-left: 25px;
                                                      margin-top: 30px;
                                                      width: 125px;
                                                      color: #FFFFFF;
                                                     font-size: 17px;
                                                     font-weight: 700;">
                         <label>User Name</label>
-                        <input type="text" id="username" name="username">
+                        <input type="text" id="username" name="username" value={{user.username}}>
                     </div>
 
-                    <div class="inputfield" style="  margin-left: 25px;
+                    <div class="outputfield" style="  margin-left: 25px;
                                                      margin-top: 30px;
                                                      width: 125px;
                                                      color: #FFFFFF;
                                                     font-size: 17px;
                                                     font-weight: 700;">
                         <label>Password</label>
-                        <input type="password" id="pass1" name="pass1">
+                        <input type="text" id="pass1" name="pass1">
                     </div>
 
                    
@@ -92,17 +92,8 @@
                                                     font-size: 17px;
                                                     font-weight: 700;">
                         <label>Email Address</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" value={{user.email}}>
                     </div>
-
-                    <div class="inputfield" style="  margin-left: 25px;
-                                                     margin-top: 30px;
-                                                     width: 125px;
-                                                     color: #FFFFFF;
-                                                    font-size: 17px;
-                                                    font-weight: 700;" >
-                        <label>Phone Number</label>
-                        <input type="text" id="phone" name="phone">
                     </div>
 
                     
