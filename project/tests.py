@@ -264,25 +264,26 @@ class PassengerHomePageTests(TestCase):
 ####################################integration-test########################
 
 
-    def testRegisterStudentAndLogin(self):
+    def testPassengerHomePage_integration_test(self):
         
         data_login = {'tooo': 'Hura , Israel', 'fromm': 'tell aviv'}
-        data_register = {'first_name': 'aa', 'last_name': '1234'}
+        data_register = {'email1': 'nursery', 'email2': 'Harvesting / training the locality'}
 
-        response = self.client.post(reverse('index'), data=data_register, follow=True)
+        response = self.client.post(reverse('map'), data=data_register, follow=True)
 
         self.assertEqual(response.status_code, 200)
 
 
-        response = self.client.post(reverse('Login'), data=data_login, follow=True)
+        response = self.client.post(reverse('PassengerHomePage'), data=data_login, follow=True)
 
 
-        self.assertTemplateUsed(response, 'Login.html')
-        self.assertRedirects(response, reverse('Login'))         
+        self.assertTemplateUsed(response, 'PassengerHomePage.html')
+        self.assertRedirects(response, reverse('PassengerHomePage'))         
 
-
+   
        
 
 
        
-                                  
+         
+
