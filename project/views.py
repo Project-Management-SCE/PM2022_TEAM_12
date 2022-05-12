@@ -260,7 +260,10 @@ def PassengerNotification(request):
     return render(request,'project/PassengerNotification.html')
 
 def DriverChangePassword(request):
-     return render(request,'project/DriverChangePassword.html')
+    if request.method == "POST" :
+        old_pass=request.POST.get('full_name')
+        new_pass=request.POST.get('email')
+    return render(request,'project/DriverChangePassword.html')
 
 
 
