@@ -1,7 +1,7 @@
 import django
 
 from django.db import models
-from django.test import TestCase,SimpleTestCase,Client
+from django.test import TestCase,SimpleTestCase,Client,tag
 from django.urls import resolve
 from .models import *
 from .views import *

@@ -26,7 +26,7 @@ pipeline {
 		      }
 			}
         }
-        stage(' integration-test') {
+        stage(' integration_test') {
             agent {
                 docker {
                     image 'python:3.10.4'
@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
 		            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'python manage.py test --tag=integration-test'
+                sh 'python manage.py test --tag=integration_test'
 		      }
 			}
         }
