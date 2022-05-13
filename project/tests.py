@@ -261,7 +261,11 @@ class PassengerHomePageTests(TestCase):
       response = c.get(('PassengerNotification'))
       self.assert_(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'PassengerNotification.html')  
-
+    def test_PassengerProfile(self):
+      c = Client()
+      response = c.get(('PassengerProfile'))
+      self.assert_(response.status_code, 200)
+      self.assertTemplateNotUsed(response, 'PassengerProfile.html')
     
 
 ####################################integration-test########################
