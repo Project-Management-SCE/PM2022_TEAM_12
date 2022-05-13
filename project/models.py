@@ -20,9 +20,13 @@ class Updates(models.Model):
     senderID=models.CharField(max_length=100,default='')
     BusLine=models.CharField(max_length=100,default='')
     message=models.CharField(max_length=100,default='')
-
     class Meta:
         db_table = 'Updates'
+
+class Report(models.Model):
+    UserName=models.CharField(max_length=100,default='')
+    class Meta:
+        db_table = 'Reports'
 
 
 
