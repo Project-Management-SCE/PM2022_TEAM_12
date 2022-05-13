@@ -1,10 +1,8 @@
 from django.contrib import admin
-from project.models import User,Driver,Updates
-#,Passenger,Driver
-# Register your models here.
+from project.models import User,Driver,Updates,Report
 
 
 admin.site.register(User)
-#admin.site.register(Passenger)
 admin.site.register(Driver)
 admin.site.register(Updates)
+admin.site.register(Report)

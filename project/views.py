@@ -1,4 +1,4 @@
-from unicodedata import name
+#from unicodedata import name
 from django.http import HttpResponse,JsonResponse
 from django.core.mail import send_mail
 from email.message import EmailMessage
@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as LL
-from project.models import User,Driver,Updates
+from project.models import User,Driver,Updates,Report
 from project.forms import contactformemail
 from datetime import datetime
 import googlemaps
@@ -44,40 +44,40 @@ def myfirstpage(request):
 @csrf_exempt
 def login(request):
     if request.method == "POST":
-        username=request.POST.get('name')
-        pass1=request.POST.get('password')
-        user = authenticate(username=username,password=pass1)
-        if user is not None:
-            LL(request, user)
-            if user.is_authenticated and user.is_passenger :
+        name=request.POST['name']
+        pass1=request.POST['password']
+        myuser = authenticate(request,username=name,password=pass1)
+        if myuser is not None:
+            LL(request, myuser)
+            if myuser.is_authenticated and myuser.is_passenger==True :
                 return redirect('PassengerHomePage') #Go to student home
-            elif Driver.objects.filter(username=user.username):
+            elif Driver.objects.filter(username=myuser.username):
                 return redirect('DriverHomePage') #Go to  home
-            elif user.is_authenticated and user.is_Admin==True :
+            elif myuser.is_authenticated and myuser.is_Admin==True :
                 return redirect('AdminHomePage') #Go to  home
         else:
             messages.error(request,"Invalid email or password")
             return redirect('login')
-
     return render(request,'project/login.html')
-
 
 
 
 def signup(request):
 
     if request.method == "POST" :
-        name=request.POST.get('username')
-        pass1=request.POST.get('pass1')
-        email=request.POST.get('email')
+        name=request.POST['username']
+        pass1=request.POST['pass1']
+        email=request.POST['email']
         fname=request.POST.get('Fname')
         lname=request.POST.get('Lname')
-        myuser=User.objects.create_user(username=name,password=pass1)
-        #myuser.first_name=fname
-        #myuser.lname_name=lname
+        myuser=User.objects.create_user(name,email,pass1)
+        myuser.first_name=fname
+        myuser.email=email
+        myuser.last_name=lname
         myuser.is_passenger=True
         myuser.save()
         messages.success(request,"succseful")
+        LL(request, myuser)
         return redirect('login')
 
     messages.error(request,"not added")
@@ -108,9 +108,8 @@ def AdminHomePage(request):
     return render(request,'project/AdminHomePage.html')
 
 def AdminReports(request):
-    return render(request,'project/AdminReports.html')
-
-
+    reports=Report.objects.all()
+    return render(request,'project/AdminReports.html',{'users':reports})
 
 def AddNewDriver(request):
     if request.method == "POST":
@@ -140,8 +139,6 @@ def PassengerHomePage(request):
     print("***************************************")
 
     return render(request,'project/PassengerHomePage.html')
-
-
 def PassengerGetDic(request):
     return render(request,'project/PassengerGetDic.html')
 
@@ -250,6 +247,17 @@ def delete(request,id):
     obj=User.objects.get(id=id)
     obj.delete()
     return redirect('deluser')
+
+def Block(request,id):
+    obj=Report.objects.get(id=id)
+    A=User.objects.filter(username=obj.UserName)
+    A.delete()
+    obj.delete()
+    return redirect('AdminHomePage')
+
+
+
+
 
 def deleteDriver(request,id):
     obj=get_object_or_404(Driver,id=id)
