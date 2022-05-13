@@ -265,6 +265,7 @@ class PassengerHomePageTests(TestCase):
     
 
 ####################################integration-test########################
+@tag('integration_test')
 class testPassengerHomePage_integration_test_class(TestCase): 
 
    def testRegisterStudentAndLogin_new(self):
