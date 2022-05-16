@@ -145,7 +145,6 @@ def PassengerGetDic(request):
 def PassengerProfile(request,id):
     user=get_object_or_404(User,id=id)
     return render(request,'project/PassengerProfile.html',{'user':user})
-'''
 def PassengerPassword(request,id):
     user=get_object_or_404(User,id=id)
 
@@ -160,7 +159,6 @@ def PassengerPassword(request,id):
             return render(request,'project/PassengerHomePage.html',{'user':user})
     return render(request,'project/PassengerPassword.html',{'user':user})
 
-'''
 
 
 

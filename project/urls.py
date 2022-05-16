@@ -14,7 +14,7 @@ urlpatterns = [
     path('Login/',views.login,name="login"),
     path('signup/',views.signup,name="signup"),
     path('AdminReports/',views.AdminReports,name="AdminReports"),
-   #path('PassengerPassword/<int:id>',views.PassengerPassword,name="PassengerPassword"),
+    path('PassengerPassword/<int:id>',views.PassengerPassword,name="PassengerPassword"),
     path('<int:id>///',views.PassengerProfile,name="PassengerProfile"),
 
     
