@@ -41,5 +41,37 @@ pipeline {
 		      }
 			}
         }
+        stage('coverage') {
+            agent {
+                docker {
+                    image 'python:3.10.4'
+                }
+            }
+            steps {
+		        withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh "python -m coverage run --include='app/*' manage.py test"
+                    sh "python -m coverage report"		     
+                }
+			}
+        }
+        stage('pylint') {
+            agent {
+                docker {
+                    image 'python:3.10.4'
+                }
+            }
+            steps {
+		        withEnv(["HOME=${env.WORKSPACE}"]) {
+                    dir("SavingTours1"){
+						sh "python -m pylint settings.py"
+						sh "python -m pylint urls.py"
+                        sh "python -m pylint __init__.py"
+		    		}
+		    		dir("project"){
+                        sh "python -m pylint admin.py"
+		    		}		      
+                }
+			}
+        }
 	}
 }
