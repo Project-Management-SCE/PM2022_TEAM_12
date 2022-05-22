@@ -197,6 +197,11 @@ def PMyTrip(request):
 
 
 
+
+def PassengerListForDriver(request):
+     return render(request,'project/PassengerListForDriver.html')
+
+
 def DriverDetails(request):
     user= Driver.objects.filter(is_ok=True)
     return render(request,'project/DriverDetails.html',{'users': user})

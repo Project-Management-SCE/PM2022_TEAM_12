@@ -33,7 +33,17 @@ urlpatterns = [
     path('<int:id>//',views.decline,name="Decline"),
     #path('<int:busline>///', views.NotificationByDriver,name='NotificationByDriver'),
 
+
+
+
+
+    path('PassengerListForDriver/',views.PassengerListForDriver,name="PassengerListForDriver"),
+
+
+
+
     path('DriverChangePassword/',views.DriverChangePassword,name="DriverChangePassword"),
+
     path('MyDrive/',views.MyDrive,name="MyDrive"),
     path('map/',views.tripinfo,name="tripinfo"),
     path('PassengerGetDic/',views.PassengerGetDic,name="PassengerGetDic"),
