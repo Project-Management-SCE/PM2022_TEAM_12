@@ -49,7 +49,7 @@ pipeline {
             }
             steps {
 		        withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh "python -m coverage run --include='app/*' manage.py test"
+                    sh "python -m coverage run --include='project/*' manage.py test"
                     sh "python -m coverage report"		     
                 }
 			}
