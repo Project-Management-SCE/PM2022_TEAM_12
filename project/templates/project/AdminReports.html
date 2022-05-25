@@ -13,64 +13,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
        
-       
-    ]
-
-       
-<style>
-
-
-.content-table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 800px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  margin-left:50px;
-}
-
-.content-table thead tr {
-  font-family: sans-serif; /* Change your font family */
-  background-color: #AF2D18;
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
-}
-
-.content-table th{
-  width: 180px;
-  padding: 20px;
-}
-.content-table td {
-  font-family: sans-serif; /* Change your font family */
-  padding: 12px 15px;
-}
-
-
-.content-table tbody tr {  
-  border-bottom: 1px solid #dddddd;
-}
-
-        </style>
     </head>
 
 <body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
-                  <div class="header" >
-                    <style>
-                      div{
-                        height: 100px;
-                        color: #AF2D18;
-                        text-decoration: underline;
-                        margin-left:450px;
-                        overflow: hidden;
-                        font-family: "Lucida Console", monospace;
-                        font-weight: bold;
-                        font-size: 1.3rem;
-                      }
-                   </style>
-                   <h1> The Reports </h1>
-                  </div>
+  <div class="A" >
+    <style>
+      div{
+        color: #AF2D18;
+        text-decoration: underline;
+        margin-left:450px;
+        margin-top:100px;
+        overflow: hidden;
+        font-family: "Lucida Console", monospace;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+   </style>
+   <h1> The Reports </h1>
+  </div>
 <table class="content-table">
         <thead>
                 <tr>
@@ -78,8 +38,8 @@
                 </tr>
               </thead>
             {% for user in users %}                
-            <td> <a href="{% url 'detail' user.id %}"> <h2> {{user.username}} </h2> </a> </td>
-                <td> <a href="{% url 'Block' user.id %}"> <h4> Block user </h4> </a> </td>
+            <td>  <h2> {{user.UserName}} </h2> </td>
+                <td> <a href="{% url 'Block' user.id %}"> <h3> Block user </h3> </a> </td>
             </tr>
             {% endfor %}
         <script src="" async defer></script>
@@ -89,9 +49,14 @@
 
 
             </a>
-            <nav class="navbar">              
-                <b href="/logoutUser">LogOut</b>
-          
+            <nav class="navbar">
+                <a href="/Request/">Request</a>
+                <a href="/deluser/">Passengers</a>
+                <a href="/DriverDetails/">Drivers</a>
+                <a href="/AddNewDriver/">Add New Driver</a>
+                <a href="/SendMail/">Send Email</a>
+                <a href="/logoutUser">LogOut</a>
+                <a href="/AdminReports/">Reports</a>
 
 
 
@@ -100,33 +65,104 @@
 
 
         </header>
-
-
     </body>
-<style>
-  .header{
-            background: #AF2D18;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: -1rem;
-            border-bottom: var(--border);
-            position: fixed;
-            top: 0; left:0; right:0;
-            z-index: 1000;
+
+    <style>
+            :root{
+            --main-color:#6283a1;
+            --black: #13131a;
+            --bg:#010103;
+            --border: .1rem solid rgb(4, 62, 80);
+        }
+        *{
+            font-family: 'Roboto',sans-serif;
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            outline: none; border: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+        html{
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+        html::-webkit-scrollbar{
+            width: .8rem;
+        }
+        html::-webkit-scrollbar-track{
+            background: transparent;
 
         }
- .header .navbar b{
-            margin: 0 5rem;
-            font-size: 1.6rem;
-            color:#fff;
-
+        html::-webkit-scrollbar-thumb{
+            background: rgb(3, 1, 109);
+            border-radius: 5rem;
 
         }
-        .header .navbar b:hover{
-            color: var(--main-color);
-            border-bottom: .1rem solid var(--main-color);
-            padding-bottom: .5rem;
-        }
-</style>
+
+
+      .content-table {
+        border-collapse: collapse;
+        margin: 25px 20px;
+        font-size: 0.9em;
+        min-width: 800px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        margin-left:100px;
+        margin-top:80px;
+
+      }
+      
+      .content-table thead tr {
+        font-family: sans-serif; /* Change your font family */
+        background-color: #AF2D18;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+      }
+      
+      .content-table th{
+        width: 180px;
+        padding: 20px;
+        font-size: 1.6rem;
+
+      }
+      .content-table td {
+        font-family: sans-serif; /* Change your font family */
+        padding: 25px 15px;
+      }
+      
+      
+      .content-table tbody tr {  
+        border-bottom: 2px solid #dddddd;
+      }
+      .header{
+                  background: #AF2D18;
+                  color: #000000;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 1.5rem 7%;
+                  border-bottom: var(--border);
+                  position: fixed;
+                  top: 0; left:0; right:0;
+                  z-index: 1000;
+      
+      }
+      .header .logo img{
+                height: 6rem;
+                  
+      }
+      .header .navbar a{
+                margin: 0 1rem;
+                font-size: 1.6rem;
+                color:#fff;
+      }
+      .header .navbar a:hover{
+                border-bottom: .1rem solid var(--main-color);
+                padding-bottom: .5rem;
+      }
+      
+          </style>
 </html>

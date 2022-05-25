@@ -15,8 +15,6 @@
         <header class="header">
             <a href="#" class="logo">
                 <img src="static/logo.png" alt="">
-
-
             </a>
             <nav class="navbar">
 
@@ -33,22 +31,19 @@
         </header>
         <br>
         <br>
-
                 <div id="map"></div>
-
         <div class="container">
-            <form action="" method="Details" class="contact-form">
+            <form action="#" method="POST" >
                 {% csrf_token %}
                      <div class="form-control">
                     <div class="tag">To</div>
                     <output type="text" name="to">
-                        <input type="text" id="toto" value="{{too}}" readonle>
-
+                        <input type="text" id="toto" name="toto" value="{{too}}" readonle>
                 </div>
                      <div class="form-control">
                     <div class="tag">From</div>
                     <output type="text" name="from">
-                        <input type="text" id="frfr" value="{{fromm}}" readonle>
+                        <input type="text" id="frfr" name="frfr" value="{{fromm}}" readonle>
 
                 </div>
 
@@ -80,7 +75,7 @@
                     <input type="text" name="full_name">
                 </div>
 
-                <div class="form-control">
+                <div class="form-control" >
                     <div class="tag">station from</div>
                     <input type="text" name="email1">
                 </div>
@@ -90,10 +85,11 @@
                     <input type="text" name="email2">
                 </div>
                 
-                 <div class="form-control">
-                    <input type="Submit" class="btn submit-btn" value="Save">
+                 <div class="form-control" >
+                    <input type="submit" class="btn submit-btn" value="Save">
 
                 </div>
+
                 
 
                
@@ -101,8 +97,6 @@
 
                 
                    
-
-
             </form>
            
 

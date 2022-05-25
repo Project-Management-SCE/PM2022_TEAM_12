@@ -18,17 +18,21 @@
     <br>
         <table class="content-table">
     <thead>
+      <br>
+    <br>
       <tr>
-        <th>Bus Line</th>
+        <th><h2>Bus Line</h2></th>
         
       </tr>
       
     </thead>
-    {% for user in users%}
+    {% for trip in trips%}
     <tr>
-     
+       <td>
+        <h2>{{trip.BusLine}}</h2>
+      </td>
       <td>
-      <a href="PassengerListForDriver.html" class="btn btn-danger" > Passenger's List </a>
+      <h2><a href="/PassengerListForDriver/{{trip.BusLine}}" class="btn btn-danger" > Passenger's List </a></h2>
       </td>
       </tr>
       {% endfor %}
@@ -44,10 +48,10 @@
                 <img src="static/logo.png" alt="">
             </a>
             <nav class="navbar">
+                <a href="/DriverHomePage">Home</a>
                 <a href="/logoutUser">LogOut</a>
                 <a href="/DriverNotification">Notification</a>
-                <a href="/DriverChangePassword">Change Password</a>
-                 <a href="/MyDrive">My Drive</a>
+                <a href="/MyDrive">My Drive</a>
             
                 
                 

@@ -28,6 +28,15 @@ class Report(models.Model):
     class Meta:
         db_table = 'Reports'
 
+class Trip(models.Model):
+    username=models.CharField(max_length=100,default='')
+    To=models.CharField(max_length=100,default='')
+    From=models.CharField(max_length=100,default='')
+    BusLine=models.CharField(max_length=100,default='')
+    DateTime=models.DateTimeField()
+
+    class Meta:
+        db_table = 'Trips'
 
 
 

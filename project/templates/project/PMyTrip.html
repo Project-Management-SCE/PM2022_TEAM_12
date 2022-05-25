@@ -9,6 +9,35 @@
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     </head>
 <body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
+    <br>
+    <br>
+        <table class="content-table">
+    <thead>
+      <br>
+    <br>
+      <tr>
+       <th> <h2>Bus Line</h2></th>
+      </tr>
+      
+    </thead>
+    {% for trip in trips%}
+    <tr>
+       <td>
+        <h2>{{trip.BusLine}}</h2>
+      </td>
+      <td>
+      <h2><a href="/PassenegrTripInfo/{{trip.id}}" class="btn btn-danger" > More Information </a></h2>
+      </td>
+      <td>
+        <h2><a href="/DeleteOrder/{{trip.id}}" class="btn btn-danger" > Delete Order </a></h2>
+        </td>
+      </tr>
+      {% endfor %}
+    <tbody> 
+    </tbody>
+  
+  </table>
+  <script src="" async defer></script> 
     <form action="" method="POST">
         {% csrf_token %}
         <header class="header">
@@ -18,9 +47,8 @@
             <nav class="navbar">
                 <a href="/PassengerHomePage">Home</a>
                 <a href="/PassengerNotification">Notification</a>
-                <a href="/PassengerProfile">Profile</a>
+                <a href="{% url 'PassengerProfile' user.id %}">Profile</a>
                 <a href="{% url 'PassengerPassword' user.id %}">Change Password</a>
-
                 <a href="/logoutUser">LogOut</a>
 
             </nav>
@@ -91,6 +119,35 @@
             color: #fff;
             border-bottom: .1rem solid var(--main-color);
             padding-bottom: .5rem;
+        }
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 800px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            margin-left:50px;
+        }
+
+        .content-table thead tr {
+            background-color: #AF2D18;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th
+        {
+            width: 380px;
+            padding: 20px;
+            margin: 25px auto;           
+        }
+        .content-table td {
+            padding: 12px 15px;
+        }
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
         }
     
 

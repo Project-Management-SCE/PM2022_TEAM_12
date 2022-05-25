@@ -5,7 +5,6 @@ from . import views
 from . forms import MyfileuploadForm
 from django.conf.urls.static import static
 from django.conf import settings
-
 urlpatterns = [
     path('',views.index,name="index"),
     path('abouthome',views.abouthome,name="abouthome"),
@@ -16,10 +15,6 @@ urlpatterns = [
     path('AdminReports/',views.AdminReports,name="AdminReports"),
     path('PassengerPassword/<int:id>',views.PassengerPassword,name="PassengerPassword"),
     path('<int:id>///',views.PassengerProfile,name="PassengerProfile"),
-
-    
-    
-
     path('DriverSignup/',views.DriverSignup,name="DriverSignup"),
     path('AdminHomePage/',views.AdminHomePage,name="AdminHomePage"),
     path('AddNewDriver/',views.AddNewDriver,name="AddNewDriver"),
@@ -31,22 +26,12 @@ urlpatterns = [
     path('<int:id>', views.details,name='detail'),
     path('<int:id>/"',views.accept,name="Accept"),
     path('<int:id>//',views.decline,name="Decline"),
-    #path('<int:busline>///', views.NotificationByDriver,name='NotificationByDriver'),
-
-
-
-
-
-    path('PassengerListForDriver/',views.PassengerListForDriver,name="PassengerListForDriver"),
-
-
-
-
-    path('DriverChangePassword/',views.DriverChangePassword,name="DriverChangePassword"),
-
+    path('DeleteOrder/<int:id>',views.DeleteOrder,name="DeleteOrder"),
+    path('PassenegrTripInfo/<int:id>',views.PassenegrTripInfo,name="PassenegrTripInfo"),
+    path('PassengerListForDriver/<int:bus>',views.PassengerListForDriver,name="PassengerListForDriver"),
+    path('DriverChangePassword/<int:id>',views.DriverChangePassword,name="DriverChangePassword"),
     path('MyDrive/',views.MyDrive,name="MyDrive"),
-    path('map/',views.tripinfo,name="tripinfo"),
-    path('PassengerGetDic/',views.PassengerGetDic,name="PassengerGetDic"),
+    path('PassengerGetDic/<busnum>/<buscompany>/',views.PassengerGetDic,name="PassengerGetDic"),
     path('DriverDetails/',views.DriverDetails,name="DriverDetails"),
     path('deluser/',views.deluser,name="deluser"),
     path('delete/<int:id>',views.delete,name="delete"),
@@ -58,6 +43,5 @@ urlpatterns = [
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
     path('OrderTrip/',views.OrderTrip,name="OrderTrip"),
-
-
+    path('Report/<int:id>',views.report,name="report"),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
