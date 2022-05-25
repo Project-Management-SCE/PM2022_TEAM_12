@@ -260,3 +260,14 @@ def PassengerPassword(request,id):
             user1.save()
             return render(request,'project/PassengerHomePage.html',{'user':user})
     return render(request,'project/PassengerPassword.html',{'user':user})
+def MyDrive(request):
+    trips=Trip.objects.all().values('BusLine').distinct()
+    return render(request,'project/MyDrive.html',{'trips':trips})
+def PassenegrTripInfo(request,id):
+    trip=get_object_or_404(Trip,id=id)
+    return render(request,'project/PassenegrTripInfo.html',{'trip':trip})
+def report(request,id):
+    obj=Trip.objects.get(id=id)
+    A=Report(UserName=obj.username)
+    A.save()
+    return redirect('DriverHomePage')
