@@ -42,6 +42,5 @@ urlpatterns = [
     path('PassengerNotification/',views.PassengerNotification,name="PassengerNotification"),
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
-    path('OrderTrip/',views.OrderTrip,name="OrderTrip"),
     path('Report/<int:id>',views.report,name="report"),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
