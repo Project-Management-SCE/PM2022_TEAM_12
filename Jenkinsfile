@@ -40,19 +40,6 @@ pipeline {
 		      }
 			}
         }
-        stage('coverage') {
-            agent {
-                docker {
-                    image 'python:3.10.4'
-                }
-            }
-            steps {
-		        withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh "python -m coverage run --include='project/*' manage.py test"
-                    sh "python -m coverage report"		     
-                }
-			}
-        }
         stage('pylint') {
             agent {
                 docker {
