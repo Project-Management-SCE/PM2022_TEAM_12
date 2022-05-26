@@ -42,16 +42,5 @@ urlpatterns = [
     path('PassengerNotification/',views.PassengerNotification,name="PassengerNotification"),
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
-<<<<<<< Updated upstream
     path('Report/<int:id>',views.report,name="report"),
-=======
-    path('OrderTrip/',views.OrderTrip,name="OrderTrip"),
-    path('PassenegrTripInfo/',views.PassenegrTripInfo,name="PassenegrTripInfo"),
-
-
-
-    
-
-
->>>>>>> Stashed changes
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
