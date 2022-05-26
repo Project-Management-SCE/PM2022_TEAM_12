@@ -161,25 +161,11 @@ def Request(request):
     userList= Driver.objects.filter(is_ok=False)
     return render(request, 'project/Request.html', {'users': userList})
 def PMyTrip(request):
-<<<<<<< Updated upstream
     trips= Trip.objects.filter(username=request.user.username)
     return render(request,'project/PMyTrip.html',{'trips':trips})
 def PassengerListForDriver(request,bus):
     trips= Trip.objects.filter(BusLine=bus)
     return render(request,'project/PassengerListForDriver.html',{'trips':trips})
-=======
-     return render(request,'project/PMyTrip.html')
-
-
-
-def PassenegrTripInfo(request):
-     return render(request,'project/PassenegrTripInfo.html')
-
-def PassengerListForDriver(request):
-     return render(request,'project/PassengerListForDriver.html')
-
-
->>>>>>> Stashed changes
 def DriverDetails(request):
     user= Driver.objects.filter(is_ok=True)
     return render(request,'project/DriverDetails.html',{'users': user})
