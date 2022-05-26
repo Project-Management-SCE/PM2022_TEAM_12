@@ -291,5 +291,6 @@ def new_list():
     k=soup.find_all("input")
     #print(k)
     companies = [com.text for com in soup.find_all('b')]
-    new_pass=request.POST.get('companies')
-    return redirect('PassengerGetDic')
+    
+#    new_pass=request.POST.get('companies')
+#    return redirect('PassengerGetDic')
