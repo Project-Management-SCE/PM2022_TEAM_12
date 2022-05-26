@@ -14,6 +14,11 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from . forms import MyfileuploadForm
 import smtplib
+
+from bs4 import BeautifulSoup
+from urllib.request import urlopen, Request
+from datetime import time
+from googlesearch import search
 keyy='AIzaSyAsUJ0P3eueaI2IdbInU6P4I6amqPyYHUI'
 gmaps = googlemaps.Client(key=keyy)
 
@@ -271,3 +276,20 @@ def report(request,id):
     A=Report(UserName=obj.username)
     A.save()
     return redirect('DriverHomePage')
+
+
+
+def new_list():
+    hhelp="אוטובוס קרוב קו"
+    result=list(search(tooo+"ל"+ fromm +  BusNum +hhelp))
+    print(result)
+    url=result[2]
+    client = Request(url, headers={"User-Agent" : "Mozilla/5.0"})
+    page = urlopen(client).read()
+    soup = BeautifulSoup(page, 'html.parser')
+    #print(soup)
+    k=soup.find_all("input")
+    #print(k)
+    companies = [com.text for com in soup.find_all('b')]
+    new_pass=request.POST.get('companies')
+    return redirect('PassengerGetDic')
