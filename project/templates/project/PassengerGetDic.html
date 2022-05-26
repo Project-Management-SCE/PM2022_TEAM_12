@@ -72,23 +72,46 @@
                 </div>
                 <div class="form-control">
                     <div class="tag"> bus line</div>
-                    <input type="text" name="full_name">
+                    <input type="text"  name="full_name" value="{{busnum}}" readonly>
                 </div>
 
                 <div class="form-control" >
                     <div class="tag">station from</div>
-                    <input type="text" name="email1">
+                    <input type="text" id="fromst" name="fromst" readonly>
                 </div>
 
                <div class="form-control">
                     <div class="tag">station to</div>
-                    <input type="text" name="email2">
+                    <input type="text"  id="tost" name="tost" readonly>
                 </div>
                 
                  <div class="form-control" >
                     <input type="submit" class="btn submit-btn" value="Save">
 
                 </div>
+
+                <table class="tablee">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Check</th>
+     <th scope="col">Station</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in stations%}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td><input type="checkbox" id="sta" name="sta" value="{{forloop.counter}}"  onclick="stcheck({{forloop.counter}})"></td>
+      <td>
+      <label id="{{forloop.counter}}" >{{i}}</label>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+                
 
                 
 

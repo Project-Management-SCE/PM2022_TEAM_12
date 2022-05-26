@@ -14,9 +14,11 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from . forms import MyfileuploadForm
 import smtplib
-
+from urllib.parse import urlparse
 from bs4 import BeautifulSoup
-from urllib.request import urlopen, Request
+from urllib.request import urlopen
+from urllib.request import Request as ReqReq
+
 from datetime import time
 from googlesearch import search
 keyy='AIzaSyAsUJ0P3eueaI2IdbInU6P4I6amqPyYHUI'
@@ -124,6 +126,24 @@ def PassengerHomePage(request):
     return render(request,'project/PassengerHomePage.html')
 @csrf_exempt
 def PassengerGetDic(request,busnum,buscompany):
+    hhelp="אוטובוס קרוב קו"
+    result=list(search(request.session['tooo']+"  "+ request.session['fromm'] +  ' '+busnum +' '+hhelp))
+    for i in result[:20]: 
+        domain = urlparse(i).netloc
+        print(domain.split('.')[0])
+        if domain.split('.')[0]=='xn--4dbclabp0e':
+            url=i
+            break
+
+    client = ReqReq(url, headers={"User-Agent" : "Mozilla/5.0"})
+    page = urlopen(client).read()
+    soup = BeautifulSoup(page, 'html.parser')
+    #print(soup)
+    k=soup.find_all("input")
+    #print(k)
+    companies = [com.text for com in soup.find_all('b')]
+   
+
     k=Busway(request.session['fromm'],request.session['tooo'])
     if request.method =='POST':
         user=request.user.username
@@ -134,7 +154,7 @@ def PassengerGetDic(request,busnum,buscompany):
         A=Trip(username=user,To=STo,From=SFrom,BusLine=Bus,DateTime=DTime)
         A.save()
         return redirect('PassengerHomePage')
-    return render(request,'project/PassengerGetDic.html',{'busnum':busnum,'buscompany':buscompany,'busstation':k[1],'fromm':request.session['fromm'],'too':request.session['tooo']})
+    return render(request,'project/PassengerGetDic.html',{'busnum':busnum,'buscompany':buscompany,'busstation':k[1],'fromm':request.session['fromm'],'too':request.session['tooo'],'stations':companies})
 @csrf_exempt
 def PassengerProfile(request,id):
     user=get_object_or_404(User,id=id)
@@ -279,7 +299,7 @@ def report(request,id):
 
 
 
-def new_list():
+def new_list(response):
     hhelp="אוטובוס קרוב קו"
     result=list(search(tooo+"ל"+ fromm +  BusNum +hhelp))
     print(result)
@@ -291,6 +311,5 @@ def new_list():
     k=soup.find_all("input")
     #print(k)
     companies = [com.text for com in soup.find_all('b')]
-    
-#    new_pass=request.POST.get('companies')
-#    return redirect('PassengerGetDic')
+
+    return redirect('PassengerGetDic')
