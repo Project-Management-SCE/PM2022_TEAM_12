@@ -134,7 +134,6 @@ def PassengerGetDic(request,busnum,buscompany):
         if domain.split('.')[0]=='xn--4dbclabp0e':
             url=i
             break
-
     client = ReqReq(url, headers={"User-Agent" : "Mozilla/5.0"})
     page = urlopen(client).read()
     soup = BeautifulSoup(page, 'html.parser')
@@ -143,12 +142,11 @@ def PassengerGetDic(request,busnum,buscompany):
     #print(k)
     companies = [com.text for com in soup.find_all('b')]
    
-
     k=Busway(request.session['fromm'],request.session['tooo'])
     if request.method =='POST':
         user=request.user.username
-        SFrom=request.POST.get('email1')
-        STo=request.POST.get('email2')
+        SFrom=request.POST.get('fromst')
+        STo=request.POST.get('tost')
         Bus=request.POST.get('full_name')
         DTime=request.POST.get('deptime')
         A=Trip(username=user,To=STo,From=SFrom,BusLine=Bus,DateTime=DTime)
@@ -297,8 +295,6 @@ def report(request,id):
     A.save()
     return redirect('DriverHomePage')
 
-
-
 def new_list(response):
     hhelp="אוטובוס קרוב קו"
     result=list(search(tooo+"ל"+ fromm +  BusNum +hhelp))
@@ -311,5 +307,4 @@ def new_list(response):
     k=soup.find_all("input")
     #print(k)
     companies = [com.text for com in soup.find_all('b')]
-
     return redirect('PassengerGetDic')
