@@ -21,7 +21,8 @@
         <br>
       <tr>
         <th><h2>User Name</h2></th>
-        
+        <th><h2>From Station</h2></th>
+
       </tr>
       
     </thead>
@@ -31,13 +32,13 @@
      <td>
         <h2>{{trip.username}}</h2>
      </td>
+     <td>
+      <h2>{{trip.From}}</h2>
+   </td>
       <td>
         <h1><a href="{% url 'report' trip.id %}" class="btn btn-danger" >    !!! </a></h1>
       </td>
-      <td>
-        <a href="" class="btn btn-danger" > VVV </a>
-      </td>
-      </tr>
+    </tr>
       {% endfor %}
     <tbody> 
     </tbody>
