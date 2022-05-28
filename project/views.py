@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as LL
 from project.models import User,Driver,Updates,Report,Trip,Schedule
 from project.forms import contactformemail
-import datetime
+from datetime import datetime 
 import googlemaps
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -43,14 +43,6 @@ def login(request):
         if myuser is not None:
             LL(request, myuser)
             if myuser.is_authenticated and myuser.is_passenger==True :
-                now = datetime.datetime.now().time()
-                d = datetime.time(10, 33, 45)
-                if now<d:
-                    print('11111111')
-                else:
-                    print("22222")
-
-
                 '''trips= Trip.objects.filter(DateTime.time() >datetime.now().time())
                 print("***************************\n")
                 print(len(trips))
@@ -155,11 +147,8 @@ def PassengerGetDic(request,busnum,buscompany):
     client = ReqReq(url, headers={"User-Agent" : "Mozilla/5.0"})
     page = urlopen(client).read()
     soup = BeautifulSoup(page, 'html.parser')
-    #print(soup)
     k=soup.find_all("input")
-    #print(k)
     companies = [com.text for com in soup.find_all('b')]
-   
     k=Busway(request.session['fromm'],request.session['tooo'])
     if request.method =='POST':
         user=request.user.username
@@ -167,6 +156,19 @@ def PassengerGetDic(request,busnum,buscompany):
         STo=request.POST.get('tost')
         Bus=request.POST.get('full_name')
         DTime=request.POST.get('deptime')
+        Drivers=Schedule.objects.all()
+        for i in range(len(Drivers)):
+            start=Drivers[i].StartTime
+            end=Drivers[i].EndTime
+            #if DTime.
+        print("++++++++++\n")
+        #print(DTime.time())
+        print("++++++++++\n")
+
+
+
+
+
         A=Trip(username=user,To=STo,From=SFrom,BusLine=Bus,DateTime=DTime)
         A.save()
         return redirect('PassengerHomePage')
@@ -313,7 +315,10 @@ def report(request,id):
     A=Report(UserName=obj.username)
     A.save()
     return redirect('DriverHomePage')
-
+def endtrip(requedt,id):
+    obj=get_object_or_404(Trip,id=id)
+    obj.delete()
+    return redirect('DriverPageHome')
 def new_list(response):
     hhelp="אוטובוס קרוב קו"
     result=list(search(tooo+"ל"+ fromm +  BusNum +hhelp))

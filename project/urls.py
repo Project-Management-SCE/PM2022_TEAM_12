@@ -45,4 +45,5 @@ urlpatterns = [
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
     path('Report/<int:id>',views.report,name="report"),
+    path('TripEnd/<int:id>',views.endtrip,name="endtrip"),
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
