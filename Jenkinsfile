@@ -48,7 +48,6 @@ pipeline {
             }
             steps {
 		        withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'pip install coverage'
                     sh "python -m coverage run --include='project/*' manage.py test"
                     sh "python -m coverage report"		     
                 }
@@ -62,7 +61,6 @@ pipeline {
             }
             steps {
 		        withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'pip install pylint-quotes'
                     dir("SavingTours1"){
 						sh "python -m pylint settings.py"
 						sh "python -m pylint urls.py"
