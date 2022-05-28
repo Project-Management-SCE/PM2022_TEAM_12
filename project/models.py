@@ -29,10 +29,16 @@ class Trip(models.Model):
     To=models.CharField(max_length=100,default='')
     From=models.CharField(max_length=100,default='')
     BusLine=models.CharField(max_length=100,default='')
+    Driver=models.CharField(max_length=100,default='')
     DateTime=models.DateTimeField()
     class Meta:
         db_table = 'Trips'
-
+class Schedule(models.Model):
+    DriverName=models.CharField(max_length=100,default='')
+    StartTime=models.TimeField()
+    EndTime=models.TimeField()
+    class Meta:
+        db_table = 'Schedules'
 
 
     

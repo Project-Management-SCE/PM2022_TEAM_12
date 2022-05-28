@@ -1,3 +1,4 @@
+from xmlrpc.client import DateTime
 from django.http import HttpResponse,JsonResponse
 from django.core.mail import send_mail
 from email.message import EmailMessage
@@ -6,9 +7,9 @@ from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as LL
-from project.models import User,Driver,Updates,Report,Trip
+from project.models import User,Driver,Updates,Report,Trip,Schedule
 from project.forms import contactformemail
-from datetime import datetime
+import datetime
 import googlemaps
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -42,6 +43,23 @@ def login(request):
         if myuser is not None:
             LL(request, myuser)
             if myuser.is_authenticated and myuser.is_passenger==True :
+                now = datetime.datetime.now().time()
+                d = datetime.time(10, 33, 45)
+                if now<d:
+                    print('11111111')
+                else:
+                    print("22222")
+
+
+                '''trips= Trip.objects.filter(DateTime.time() >datetime.now().time())
+                print("***************************\n")
+                print(len(trips))
+                now = datetime.now().time()
+                if trips.DateTime.time()>now:
+                    print("driver 1\n")
+                else:
+                    print("driver 2\n")'''
+                print("***************************\n")
                 return redirect('PassengerHomePage') #Go to student home
             elif Driver.objects.filter(username=myuser.username):
                 return redirect('DriverHomePage') #Go to  home
@@ -284,7 +302,8 @@ def PassengerPassword(request,id):
             return render(request,'project/PassengerHomePage.html',{'user':user})
     return render(request,'project/PassengerPassword.html',{'user':user})
 def MyDrive(request):
-    trips=Trip.objects.all().values('BusLine').distinct()
+    #trips=Trip.objects.all().values('BusLine').distinct()
+    trips=Trip.objects.filter(Driver=request.user.username).values('BusLine').distinct()
     return render(request,'project/MyDrive.html',{'trips':trips})
 def PassenegrTripInfo(request,id):
     trip=get_object_or_404(Trip,id=id)
