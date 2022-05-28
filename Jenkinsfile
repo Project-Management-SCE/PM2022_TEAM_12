@@ -49,7 +49,6 @@ pipeline {
             steps {
 		        withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip install codecov'
-
                     sh "python -m coverage run --include='project/*' manage.py test"
                     sh "python -m coverage report"		     
                 }
