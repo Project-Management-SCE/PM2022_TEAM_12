@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-43tlo0d0v1u9+#+rw7y@5w)!3d_y7*t=r%d)o)st01a05o5a^-
 DEBUG = True
 ALLOWED_HOSTS = []
 STATICFILES_DIRS =[
-    "Desktop\SavingTours12\project\static"
+    r"Desktop\SavingTours12\project\static"
 ]
 AUTH_USER_MODEL = 'project.User'
 # Application definition
@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'project' 
+    'project'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
