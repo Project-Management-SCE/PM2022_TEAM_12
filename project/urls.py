@@ -1,10 +1,11 @@
-from unicodedata import name
-import django
+'''
+urls
+'''
 from django.urls import path
-from . import views
-from . forms import MyfileuploadForm
 from django.conf.urls.static import static
 from django.conf import settings
+from . import views
+
 urlpatterns = [
     path('',views.index,name="index"),
     path('abouthome',views.abouthome,name="abouthome"),
@@ -28,7 +29,8 @@ urlpatterns = [
     path('<int:id>//',views.decline,name="Decline"),
     path('DeleteOrder/<int:id>',views.DeleteOrder,name="DeleteOrder"),
     path('PassenegrTripInfo/<int:id>',views.PassenegrTripInfo,name="PassenegrTripInfo"),
-    path('PassengerListForDriver/<int:bus>',views.PassengerListForDriver,name="PassengerListForDriver"),
+    path('PassengerListForDriver/<int:bus>',views.PassengerListForDriver
+    ,name="PassengerListForDriver"),
     path('DriverChangePassword/<int:id>',views.DriverChangePassword,name="DriverChangePassword"),
     path('MyDrive/',views.MyDrive,name="MyDrive"),
     path('PassengerGetDic/<busnum>/<buscompany>/',views.PassengerGetDic,name="PassengerGetDic"),
@@ -43,4 +45,4 @@ urlpatterns = [
     path('DriverNotification/',views.DriverNotification,name="DriverNotification"),
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
     path('Report/<int:id>',views.report,name="report"),
-]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
