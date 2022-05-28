@@ -61,11 +61,12 @@ pipeline {
             }
             steps {
 		        withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install pylint' 
+
                     dir("SavingTours1"){
-                        sh 'pip install pylint' 
+                        sh "python -m pylint settings.py"
                         sh "python -m pylint __init__.py"
                         sh "python -m pylint urls.py"
-                        sh "python -m pylint settings.py"
 
 		    		}
 		    		dir("project"){
