@@ -305,7 +305,7 @@ def PassengerPassword(request,id):
     return render(request,'project/PassengerPassword.html',{'user':user})
 def MyDrive(request):
     #trips=Trip.objects.all().values('BusLine').distinct()
-    trips=Trip.objects.filter(Driver=request.user.username).values('BusLine').distinct()
+    trips=Trip.objects.filter(Driver=request.user.username)
     return render(request,'project/MyDrive.html',{'trips':trips})
 def PassenegrTripInfo(request,id):
     trip=get_object_or_404(Trip,id=id)
@@ -318,7 +318,7 @@ def report(request,id):
 def endtrip(requedt,id):
     obj=get_object_or_404(Trip,id=id)
     obj.delete()
-    return redirect('DriverPageHome')
+    return redirect('DriverHomePage')
 def new_list(response):
     hhelp="אוטובוס קרוב קו"
     result=list(search(tooo+"ל"+ fromm +  BusNum +hhelp))

@@ -34,6 +34,9 @@
       <td>
       <h2><a href="/PassengerListForDriver/{{trip.BusLine}}" class="btn btn-danger" > Passenger's List </a></h2>
       </td>
+      <td>
+        <h2><a href="{% url 'endtrip' trip.id %}" class="btn btn-danger" > End Trip</a></h2>
+        </td>
       </tr>
       {% endfor %}
     <tbody> 
