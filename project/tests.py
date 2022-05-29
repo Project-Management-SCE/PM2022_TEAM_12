@@ -293,3 +293,46 @@ class testPassengerHomePage_integration_test_class(TestCase):
       response = c.get(('PassengerProfile'))
       self.assert_(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'PassengerProfile.html')
+
+
+   def test_LogIn_PassengerGetDic(self):
+      response = self.client.get('Login')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('PassengerGetDic'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)
+
+
+   def test_LogIn_AdminHomePage(self):
+      response = self.client.get('Login')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('AdminHomePage'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)
+   
+
+
+   # def test_add_homework_WithLogin123(self):
+   #    self.client.force_login(self.user)
+   #    teacher = Teacher.objects.create(user=self.user)
+   #    data = {'name': 'name', 'password': 'password'}
+   #    response = self.client.post(reverse('PassengerHomePage'), data=data, follow=True)
+   #    self.assertEqual(response.status_code, 200)
+
+
+   #    self.assertTemplateUsed(response, 'index.html')
+   #    self.assertRedirects(response, reverse('Login'))
+
+
+   
+
+
+
