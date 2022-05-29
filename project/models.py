@@ -68,8 +68,10 @@ class Schedule(models.Model):
     d
     '''
     DriverName=models.CharField(max_length=100,default='')
-    StartTime=models.TimeField()
-    EndTime=models.TimeField()
+    BusLine=models.CharField(max_length=100,default='')
+    Time=models.TimeField()
+    From=models.CharField(max_length=100,default='')
+    To=models.CharField(max_length=100,default='')
     class Meta:
         '''
         change name
