@@ -37,6 +37,9 @@ def myfirstpage(request):
 @csrf_exempt
 def login(request):
     if request.method == "POST":
+        '''for x in range(12):
+            A=time()
+            Schedule(DriverName="Driver One")'''
         name=request.POST['name']
         pass1=request.POST['password']
         myuser = authenticate(request,username=name,password=pass1)
@@ -152,24 +155,19 @@ def PassengerGetDic(request,busnum,buscompany):
     k=Busway(request.session['fromm'],request.session['tooo'])
     if request.method =='POST':
         user=request.user.username
+        fr=request.POST.get('frfr')
+        to=request.POST.get('toto')
         SFrom=request.POST.get('fromst')
         STo=request.POST.get('tost')
         Bus=request.POST.get('full_name')
         DTime=request.POST.get('deptime')
-        Drivers=Schedule.objects.all()
-        for i in range(len(Drivers)):
-            start=Drivers[i].StartTime
-            end=Drivers[i].EndTime
-            #if DTime.
-        print("++++++++++\n")
-        #print(DTime.time())
-        print("++++++++++\n")
-
-
-
-
-
-        A=Trip(username=user,To=STo,From=SFrom,BusLine=Bus,DateTime=DTime)
+        a=DTime[11:13]
+        b=DTime[14:16]
+        c=DTime[17:19]
+        hour=time(int(a),int(b),int(c))
+        end=time(12,50,0)
+        obj=Schedule.objects.filter(From=fr,To=to,BusLine="62",Time__range=[hour,end])
+        A=Trip(username=user,To=STo,Driver=obj[0].DriverName,From=SFrom,BusLine=Bus,DateTime=DTime)
         A.save()
         return redirect('PassengerHomePage')
     return render(request,'project/PassengerGetDic.html',{'busnum':busnum,'buscompany':buscompany,'busstation':k[1],'fromm':request.session['fromm'],'too':request.session['tooo'],'stations':companies})

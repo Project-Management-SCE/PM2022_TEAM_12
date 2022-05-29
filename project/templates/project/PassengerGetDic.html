@@ -23,7 +23,6 @@
                 <a href="/PMyTrip">My Trip</a>
                 <a href="{% url 'PassengerProfile' user.id %}">Profile</a>
                 <a href="{% url 'PassengerPassword' user.id %}">Change Password</a>
-
                 <a href="/logoutUser">LogOut</a>
             </nav>
 
@@ -67,8 +66,7 @@
                   <div class="form-control">
                     <div class="tag">Date time</div>
                     <output type="text" name="route">
-                        <input type="datetime-local" value="2022-05-05T21:00" id="deptime" name="deptime" onchange="updatefunc()">
-
+                        <input type="datetime-local" value="{{order.pick_up_datetime|date:'Y-m-d'}}T{{order.pick_up_datetime|time:'H:i:s'}}" id="deptime" name="deptime" onchange="updatefunc()">
                 </div>
                 <div class="form-control">
                     <div class="tag"> bus line</div>
