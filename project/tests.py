@@ -653,7 +653,25 @@ class testPassengerHomePage_integration_test_class(TestCase):
 
      response = self.client.get(('logoutUser'), follow=True)#log out
 
-     self.assertNotEqual(response.status_code, 300)               
+     self.assertNotEqual(response.status_code, 300)            
+
+
+
+
+  def test_PassengerPassword_ToPassengerNotification(self):
+     response = self.client.get('PassengerPassword')#url שלב 1
+     self.assertTrue(User.is_authenticated)
+
+     response = self.client.get(('PassengerNotification'))#url אחרי הפעולה
+     self.assertNotEqual(response.status_code, 300)
+
+     response = self.client.get(('logoutUser'), follow=True)#log out
+
+     self.assertNotEqual(response.status_code, 300)                 
+
+
+
+
 
 
 
