@@ -632,6 +632,19 @@ class testPassengerHomePage_integration_test_class(TestCase):
 
 
 
+  def test_PMyTrip_ToLogin(self):
+     response = self.client.get('PMyTrip')#url שלב 1
+     self.assertTrue(User.is_authenticated)
+
+     response = self.client.get(('Login'))#url אחרי הפעולה
+     self.assertNotEqual(response.status_code, 300)
+
+     response = self.client.get(('logoutUser'), follow=True)#log out
+
+     self.assertNotEqual(response.status_code, 300)               
+
+
+
 
             
 
