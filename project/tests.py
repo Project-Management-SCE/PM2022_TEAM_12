@@ -330,11 +330,11 @@ class testPassengerHomePage_integration_test_class(TestCase):
       self.assertNotEqual(response.status_code, 300)  
 
 
-   def test_LogIn_DriverFilee(self):
-      response = self.client.get('DriverSignup')#url שלב 1
+   def test_LogIn_add_new_passenger(self):
+      response = self.client.get('signup')#url שלב 1
       self.assertTrue(User.is_authenticated)
 
-      response = self.client.get(('DriverFile'))#url אחרי הפעולה
+      response = self.client.get(('Login'))#url אחרי הפעולה
       self.assertNotEqual(response.status_code, 300)
 
       response = self.client.get(('logoutUser'), follow=True)#log out
