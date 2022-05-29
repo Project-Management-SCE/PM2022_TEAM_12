@@ -351,7 +351,86 @@ class testPassengerHomePage_integration_test_class(TestCase):
 
       response = self.client.get(('logoutUser'), follow=True)#log out
 
+      self.assertNotEqual(response.status_code, 300)
+
+
+   
+   def test_LogIn_PassengerGetDic_toPassengerHomePage(self):
+      response = self.client.get('PassengerGetDic')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('PassengerHomePage'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
       self.assertNotEqual(response.status_code, 300)      
+
+
+
+   def test_LogIn_DriverNotification_toDriverHomePage(self):
+      response = self.client.get('DriverNotification')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('DriverHomePage'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)        
+
+
+
+   def test_LogIn_DriverChangePassword_toDriverHomePage(self):
+      response = self.client.get('DriverChangePassword')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('DriverHomePage'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)
+
+
+      
+   def test_LogIn_MyDrive_toDriverHomePage(self):
+      response = self.client.get('MyDrive')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('DriverHomePage'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300) 
+
+
+
+   def test_LogIn_MyDrive_toDriverNotification(self):
+      response = self.client.get('MyDrive')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('DriverNotification'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)  
+
+
+   def test_LogIn_MyDrive_DriverHomePage(self):
+      response = self.client.get('MyDrive')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('DriverHomePage'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)                      
+    
+         
     
 
       
