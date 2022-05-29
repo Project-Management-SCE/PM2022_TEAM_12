@@ -38,12 +38,33 @@
       <td>
         <h1><a href="{% url 'report' trip.id %}" class="btn btn-danger" >    !!! </a></h1>
       </td>
+
     </tr>
+
       {% endfor %}
+
     <tbody> 
+
+
     </tbody>
+    
   
   </table>
+  <div class="button">
+    <input type="Done" class="btn" value="Done" style="
+    padding: 21px 37px;
+    font-size: 25px;
+    border: 31px;
+    background: rgb(118, 6, 6);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 19px;
+    outline: none;
+    size: 6px;
+    margin-left: 598px;
+    width: 144px;
+    ">
+</div>
           <script src="" async defer></script> 
     <form action="" method="POST">
         {% csrf_token %}
