@@ -317,6 +317,12 @@ def endtrip(requedt,id):
     obj=get_object_or_404(Trip,id=id)
     obj.delete()
     return redirect('DriverHomePage')
+def come(request,id):
+    obj=Trip.objects.get(id=id)
+    #A=Trip.objects.get(UserName=obj.username,id=id)
+    obj.delete()
+    return redirect('PassengerListForDriver',bus=obj.BusLine)
+
 def new_list(response):
     hhelp="אוטובוס קרוב קו"
     result=list(search(tooo+"ל"+ fromm +  BusNum +hhelp))

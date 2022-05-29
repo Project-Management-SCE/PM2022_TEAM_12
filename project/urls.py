@@ -46,4 +46,6 @@ urlpatterns = [
     path('PMyTrip/',views.PMyTrip,name="PMyTrip"),
     path('Report/<int:id>',views.report,name="report"),
     path('TripEnd/<int:id>',views.endtrip,name="endtrip"),
+    path('Come/<int:id>',views.come,name="come"),
+
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
