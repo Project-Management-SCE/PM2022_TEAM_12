@@ -440,7 +440,67 @@ class testPassengerHomePage_integration_test_class(TestCase):
 
       response = self.client.get(('logoutUser'), follow=True)#log out
 
-      self.assertNotEqual(response.status_code, 300)                         
+      self.assertNotEqual(response.status_code, 300)                      
+
+
+   def test_PassengerGetDic_ToPassengerNotification(self):
+      response = self.client.get('PassengerGetDic')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('PassengerNotification'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)
+
+
+   def test_PassengerGetDic_ToPMyTrip(self):
+      response = self.client.get('PassengerGetDic')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('PMyTrip'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)        
+
+
+   def test_PassengerGetDic_To74(self):
+      response = self.client.get('PassengerGetDic')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('74//'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)        
+
+
+   def test_PassengerGetDic_ToPassengerPassword(self):
+      response = self.client.get('PassengerGetDic')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('PassengerPassword'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)
+
+
+   def test_PassengerGetDic_ToLogin(self):
+      response = self.client.get('PassengerGetDic')#url שלב 1
+      self.assertTrue(User.is_authenticated)
+
+      response = self.client.get(('Login'))#url אחרי הפעולה
+      self.assertNotEqual(response.status_code, 300)
+
+      response = self.client.get(('logoutUser'), follow=True)#log out
+
+      self.assertNotEqual(response.status_code, 300)                                        
     
          
     
