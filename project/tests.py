@@ -57,32 +57,32 @@ class PassengerHomePageTests(TestCase):
         self.assert_(response.status_code, 200)
         self.assertTemplateNotUsed(response, 'DriverNotification.html')  
 
-    def test_AddNewDriver1(self):
+    def test_AddNewDriver(self):
        c = Client()
        response = c.get(('AddNewDriver'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AddNewDriver.html')  
 
 
-    def test_AddNewDriver2(self):
+    def test_AddNewDriver_sendMail(self):
        c = Client()
        response = c.get(('AddNewDriver'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AddNewDriver/SendMail.html') 
 
-    def test_AddNewDriver3(self):
+    def test_AddNewDriver_DriverDetails(self):
        c = Client()
        response = c.get(('AddNewDriver'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AddNewDriver/DriverDetails.html')   
 
-    def test_AddNewDriver4(self):
+    def test_AddNewDriver_deluser(self):
        c = Client()
        response = c.get(('AddNewDriver'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AddNewDriver/deluser.html') 
 
-    def test_AddNewDriver5(self):
+    def test_AddNewDriver_Request(self):
        c = Client()
        response = c.get(('AddNewDriver'))
        self.assert_(response.status_code, 200)
