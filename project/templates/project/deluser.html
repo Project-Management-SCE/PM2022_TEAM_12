@@ -58,6 +58,27 @@
         </style>
     </head>
 <body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
+  <header class="header">
+    <a href="#" class="logo">
+        <img src="static/logo.png" alt="">
+
+
+    </a>
+    <nav class="navbar">
+        <a href="/deluser/">Passengers</a>
+        <a href="/Request/">Request</a>
+        <a href="/DriverDetails/">Drivers</a>
+        <a href="/AddNewDriver/">Add New Driver</a>
+        <a href="/SendMail/">Send Email</a>
+        <a href="/AdminReports">Reports</a>
+        <a href="/logoutUser">LogOut</a>
+        <a href="/AdminHomePage">Home</a>
+
+    </nav>
+
+
+</header>
+
   <br>
   <br>
       <table class="content-table">
@@ -85,5 +106,33 @@
 
 </table>
         <script src="" async defer></script>
+        <style>
+          .header{
+            background: #AF2D18;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 7%;
+            border-bottom: var(--border);
+            position: fixed;
+            top: 0; left:0; right:0;
+            z-index: 1000;
+
+        }
+        .header .logo img{
+            height: 6rem;
+            
+        }
+        .header .navbar a{
+            margin: 0 1rem;
+            font-size: 1.6rem;
+            color:#fff;
+        }
+        .header .navbar a:hover{
+            color: #fff;
+            border-bottom: .1rem solid var(--main-color);
+            padding-bottom: .5rem;
+        }
+        </style>
     </body>
 </html>
