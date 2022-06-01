@@ -89,55 +89,55 @@ class PassengerHomePageTests(TestCase):
        self.assertTemplateNotUsed(response, 'AddNewDriver/Request.html')          
 
 
-    def test_PageHome1(self):
+    def test_PageHome(self):
        c = Client()
        response = c.get(('index'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'index/signup.html') 
 
-    def test_PageHome2(self):
+    def test_PageHome_login(self):
        c = Client()
        response = c.get(('index'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'index/login.html')        
 
-    def test_PageHome3(self):
+    def test_PageHome_DriverSignup(self):
        c = Client()
        response = c.get(('index'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'index/DriverSignup.html')
 
-    def test_AdminHomePage1(self):
+    def test_AdminHomePage(self):
        c = Client()
        response = c.get(('AdminHomePage'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AdminHomePage.html')  
 
-    def test_AdminHomePage2(self):
+    def test_AdminHomePage_SendMail(self):
        c = Client()
        response = c.get(('AdminHomePage'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AdminHomePage/SendMail.html')   
 
-    def test_AdminHomePage3(self):
+    def test_AdminHomePage_AddNewDriver(self):
        c = Client()
        response = c.get(('AdminHomePage'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AdminHomePage/AddNewDriver.html')  
 
-    def test_AdminHomePage4(self):
+    def test_AdminHomePage_DriverDetails(self):
        c = Client()
        response = c.get(('AdminHomePage'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AdminHomePage/DriverDetails.html')  
 
-    def test_AdminHomePage5(self):
+    def test_AdminHomePage_deluser(self):
        c = Client()
        response = c.get(('AdminHomePage'))
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'AdminHomePage/deluser.html')
 
-    def test_AdminHomePage6(self):
+    def test_AdminHomePage_Request(self):
        c = Client()
        response = c.get(('AdminHomePage'))
        self.assert_(response.status_code, 200)
@@ -155,7 +155,7 @@ class PassengerHomePageTests(TestCase):
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'DriverDetails.html')
 
-    def test_DriverFile1(self):
+    def test_DriverFile(self):
        c = Client()
        response = c.get(('DriverFile'))
        self.assert_(response.status_code, 200)
@@ -173,13 +173,13 @@ class PassengerHomePageTests(TestCase):
        self.assert_(response.status_code, 200)
        self.assertTemplateNotUsed(response, 'DriverNotification.html')
        
-    def test_DriverSignup1(self):
+    def test_DriverSignup(self):
       c = Client()
       response = c.get(('DriverSignup'))
       self.assert_(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'DriverSignup.html') 
 
-    def test_DriverSignup2(self):
+    def test_DriverSignup_DriverFile(self):
       c = Client()
       response = c.get(('DriverSignup'))
       self.assert_(response.status_code, 200)
@@ -191,19 +191,19 @@ class PassengerHomePageTests(TestCase):
       self.assert_(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'login.html')
 
-    def test_login2(self):
+    def test_login_AdminHomePade(self):
       c = Client()
       response = c.get(('login'))
       self.assert_(response.status_code, 200)
-      self.assertTemplateNotUsed(response, 'login/AsminHomePade.html')
+      self.assertTemplateNotUsed(response, 'login/AdminHomePade.html')
 
-    def test_login3(self):
+    def test_login_PassengerHomePage(self):
       c = Client()
       response = c.get(('login'))
       self.assert_(response.status_code, 200)
       self.assertTemplateNotUsed(response, 'login/PassengerHomePage.html')
 
-    def test_login4(self):
+    def test_login_DriverHomePage(self):
       c = Client()
       response = c.get(('login'))
       self.assert_(response.status_code, 200)
