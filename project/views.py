@@ -1,3 +1,4 @@
+from sqlite3 import Time
 from xmlrpc.client import DateTime
 from django.http import HttpResponse,JsonResponse
 from django.core.mail import send_mail
@@ -9,7 +10,7 @@ from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as LL
 from project.models import User,Driver,Updates,Report,Trip,Schedule
 from project.forms import contactformemail
-from datetime import datetime 
+from datetime import datetime ,timedelta
 import googlemaps
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -37,9 +38,6 @@ def myfirstpage(request):
 @csrf_exempt
 def login(request):
     if request.method == "POST":
-        '''for x in range(12):
-            A=time()
-            Schedule(DriverName="Driver One")'''
         name=request.POST['name']
         pass1=request.POST['password']
         myuser = authenticate(request,username=name,password=pass1)
