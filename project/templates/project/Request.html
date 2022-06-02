@@ -49,6 +49,38 @@
 .content-table tbody tr {  
   border-bottom: 1px solid #dddddd;
 }
+ .header{
+            background: #AF2D18;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1%;
+            border-bottom: var(--border);
+            position: fixed;
+            top: 0; right:0;
+            z-index: 800;
+
+        }
+      
+.header .navbar a{
+            margin: 0 2rem;
+            font-size: 1.2rem;
+            color:#fff;
+        }
+        .header .navbar a:hover{
+            border-bottom: .1rem solid var(--main-color);
+            padding-bottom: .5rem;
+        }
+
+    div {
+    color: #AF2D18;
+    text-decoration: underline;
+    margin-left: 450px;
+    overflow: hidden;
+    font-family: "Lucida Console", monospace;
+    font-size: 1.3rem;
+}
 
         </style>
     </head>
@@ -67,10 +99,38 @@
                         font-size: 1.3rem;
                       }
                    </style>
-                   <h1> The Requests </h1>
+                    <header class="header">
+            <a href="#" class="logo">
+                <img src="static/logo.png" alt="">
+
+
+            </a>
+            <nav class="navbar">
+                <a href="/Request/">Request</a>
+                <a href="/deluser/">Passengers</a>
+                <a href="/DriverDetails/">Drivers</a>
+                <a href="/AddNewDriver/">Add New Driver</a>
+                <a href="/SendMail/">Send Email</a>
+                <a href="/AdminReports">Reports</a>
+                <a href="/logoutUser">LogOut</a>
+
+
+
+
+            </nav>
+
+
+        </header>
+
+
                   </div>
+                   
+
+
 <table class="content-table">
+
         <thead>
+        
                 <tr>
                   <th>username</th>
                 </tr>
