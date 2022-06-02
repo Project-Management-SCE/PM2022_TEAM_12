@@ -37,6 +37,7 @@ def myfirstpage(request):
     return render(request,'index.html')
 @csrf_exempt
 def login(request):
+    
     if request.method == "POST":
         name=request.POST['name']
         pass1=request.POST['password']
@@ -163,8 +164,8 @@ def PassengerGetDic(request,busnum,buscompany):
         b=DTime[14:16]
         c=DTime[17:19]
         hour=time(int(a),int(b),int(c))
-        end=time(12,50,0)
-        obj=Schedule.objects.filter(From=fr,To=to,BusLine="62",Time__range=[hour,end])
+        end=time(int(a)+1,int(b),int(c))
+        obj=Schedule.objects.filter(From=fr,To=to,BusLine=busnum,Time__range=[hour,end])
         A=Trip(username=user,To=STo,Driver=obj[0].DriverName,From=SFrom,BusLine=Bus,DateTime=DTime)
         A.save()
         return redirect('PassengerHomePage')
