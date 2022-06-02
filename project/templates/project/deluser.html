@@ -9,79 +9,19 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
-        <style>
-* {
-  font-family: sans-serif; /* Change your font family */
-}
 
-.content-table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 800px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  margin-left:50px;
-}
-
-.content-table thead tr {
-  background-color: #AF2D18;
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
-}
-
-.content-table th
-{
-            width: 380px;
-            padding: 20px;
-            margin: 25px auto;
-            
-            
-           
-            
-}
-.content-table td {
-  padding: 12px 15px;
-  
-}
-
-.content-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
-
-
-
-
-
-        </style>
     </head>
 <body  style="background-image:url('{% static 'img/unnamed.jpg' %}'); background-repeat: no-repeat; background-size:100%;">
-  <header class="header">
-    <a href="#" class="logo">
-        <img src="static/logo.png" alt="">
 
 
-    </a>
-    <nav class="navbar">
-        <a href="/Request/">Request</a>
-        <a href="/DriverDetails/">Drivers</a>
-        <a href="/AddNewDriver/">Add New Driver</a>
-        <a href="/SendMail/">Send Email</a>
-        <a href="/AdminReports">Reports</a>
-        <a href="/logoutUser">LogOut</a>
-        <a href="/AdminHomePage">Home</a>
-
-    </nav>
 
 
-</header>
 
-  <br>
-  <br>
       <table class="content-table">
   <thead>
+    <br>
+    <br>
+    <br>
     <tr>
       <th>id</th>
       <th>user name</th>
@@ -100,13 +40,100 @@
     </td>
     </tr>
     {% endfor %}
-  <tbody> 
-  </tbody>
 
-</table>
-        <script src="" async defer></script>
+            </table>
+    <script src="" async defer></script>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="static/logo.png" alt="">
+
+
+        </a>
+
+    <nav class="navbar">
+      <a href="/Request/">Request</a>
+      <a href="/DriverDetails/">Drivers</a>
+      <a href="/AddNewDriver/">Add New Driver</a>
+      <a href="/SendMail/">Send Email</a>
+      <a href="/AdminReports">Reports</a>
+      <a href="/logoutUser">LogOut</a>
+      <a href="/AdminHomePage">Home</a>
+
+  </nav>
+</header>
+</body>
         <style>
-          .header{
+                      :root{
+            --main-color:#6283a1;
+            --black: #13131a;
+            --bg:#010103;
+            --border: .1rem solid rgb(4, 62, 80);
+        }
+        *{
+            font-family: 'Roboto',sans-serif;
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            outline: none; border: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+        html{
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+        html::-webkit-scrollbar{
+            width: .8rem;
+        }
+        html::-webkit-scrollbar-track{
+            background: transparent;
+
+        }
+        html::-webkit-scrollbar-thumb{
+            background: rgb(3, 1, 109);
+            border-radius: 5rem;
+
+        }
+          
+          .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            min-width: 800px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            margin-left:50px;
+          }
+          
+          .content-table thead tr {
+            background-color: #AF2D18;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+          }
+          
+          .content-table th
+          {
+                      width: 350px;
+                      padding: 20px;
+                      margin: 20px auto;
+                      font-size: 1.6rem;
+
+                      
+                      
+                     
+                      
+          }
+          .content-table td {
+            padding: 20px 15px;
+            
+          }
+          
+          .content-table tbody tr {
+            border-bottom: 2px solid #dddddd;
+          }
+            .header{
             background: #AF2D18;
             display: flex;
             align-items: center;
@@ -133,5 +160,4 @@
             padding-bottom: .5rem;
         }
         </style>
-    </body>
 </html>

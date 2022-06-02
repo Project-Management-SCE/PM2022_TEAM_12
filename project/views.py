@@ -110,6 +110,8 @@ def AddNewDriver(request):
         password=request.POST.get('pass')
         myuser=Driver.objects.create_user(username=name,password=password)
         myuser.its_ok=False
+        myuser.certificate="no-photo-icon-22.jpg"      
+        myuser.License="no-photo-icon-22.jpg"
         myuser.save()
         messages.success(request,"succseful")
         return redirect('AdminHomePage')
